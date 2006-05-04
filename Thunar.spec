@@ -31,8 +31,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Thunar is a modern file manager, aiming to be easy-to-use and fast.
 
 %description -l pl
-Thunar jest nowoczesnym zarz±dc± plików, nakierowanym na ³atwo¶æ
-i szybko¶æ u¿ycia.
+Thunar jest nowoczesnym zarz±dc± plików, nakierowanym na ³atwo¶æ i
+szybko¶æ u¿ycia.
 
 %package libs
 Summary:	Thunar libraries
@@ -47,7 +47,7 @@ Biblioteki Thunar.
 
 %package devel
 Summary:	Header files for Thunar libraries
-Summary(pl):	Pliki nag³ówkowe bibliotek Thunar 
+Summary(pl):	Pliki nag³ówkowe bibliotek Thunar
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 
@@ -75,7 +75,7 @@ Statyczna biblioteki Thunar
 %build
 %configure \
 	--enable-static
-	
+
 %{__make}
 
 %install
