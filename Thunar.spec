@@ -11,7 +11,9 @@ Source0:	http://www.xfce.org/archive/xfce-4.3.90.1/src/%{name}-%{version}%{_pre}
 URL:		http://thunar.xfce.org/
 BuildRequires:	GConf2-devel >= 2.4.0
 BuildRequires:	dbus-glib-devel >= 0.34
+# XXX: gamin (>= 0.1.0) is preferred over fam
 BuildRequires:	fam-devel
+BuildRequires:	glib2-devel >= 1:2.6.4
 BuildRequires:	gtk+2-devel >= 2:2.6.0
 BuildRequires:	hal-devel >= 0.5.0
 BuildRequires:	libexif-devel >= 0.6.0
@@ -19,7 +21,9 @@ BuildRequires:	libexo-devel >= 0.3.1.6
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel >= 1.2.0
 BuildRequires:	libxfce4util-devel >= 4.2.2
-BuildRequires:	pcre-devel
+BuildRequires:	pcre-devel >= 6.0
+BuildRequires:	perl-base
+BuildRequires:	pkgconfig
 BuildRequires:	startup-notification-devel >= 0.8
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	hal >= 0.5.0
