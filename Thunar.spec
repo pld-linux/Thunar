@@ -60,6 +60,11 @@ Summary:	Header files for Thunar libraries
 Summary(pl):	Pliki nag³ówkowe bibliotek Thunar
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
+Requires:	GConf2-devel >= 2.4.0
+Requires:	dbus-glib-devel >= 0.34
+Requires:	fam-devel
+Requires:	hal-devel >= 0.5.0
+Requires:	libjpeg-devel
 
 %description devel
 This is the package containing the header files for Thunar libraries.
