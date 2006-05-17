@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_without	static_libs	# don't build static library
+#
 %define		_pre	beta1
 Summary:	Xfce file manager
 Summary(pl):	Zarz±dca plików Xfce
@@ -13,6 +17,7 @@ BuildRequires:	GConf2-devel >= 2.4.0
 BuildRequires:	dbus-glib-devel >= 0.34
 # XXX: gamin (>= 0.1.0) is preferred over fam
 BuildRequires:	fam-devel
+BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.6.4
 BuildRequires:	gtk+2-devel >= 2:2.6.0
 BuildRequires:	hal-devel >= 0.5.0
@@ -79,7 +84,7 @@ Statyczna biblioteki Thunar
 
 %build
 %configure \
-	--enable-static
+	%{?with_static_libs:--enable-static}
 
 %{__make}
 
@@ -138,6 +143,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/thunar*
 %{_pkgconfigdir}/*.pc
 
+%if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/*.a
+%endif
