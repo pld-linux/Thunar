@@ -16,6 +16,7 @@ BuildRequires:	fam-devel
 BuildRequires:	glib2-devel >= 1:2.6.4
 BuildRequires:	gtk+2-devel >= 2:2.6.0
 BuildRequires:	hal-devel >= 0.5.0
+BuildRequires:	intltool
 BuildRequires:	libexif-devel >= 0.6.0
 BuildRequires:	libexo-devel >= 0.3.1.6
 BuildRequires:	libjpeg-devel
