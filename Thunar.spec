@@ -2,38 +2,41 @@
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
 #
-%define		_pre	beta1
+%define		_pre		beta2
+%define		xfce_version	4.3.90.2
 Summary:	Xfce file manager
 Summary(pl):	Zarz±dca plików Xfce
 Name:		Thunar
-Version:	0.3.0
+Version:	0.3.2
 Release:	0.%{_pre}.1
 License:	GPL v2 / LGPL v2
 Group:		Applications
-Source0:	http://www.xfce.org/archive/xfce-4.3.90.1/src/%{name}-%{version}%{_pre}.tar.bz2
-# Source0-md5:	e77437fa7b3a36f78b8db548f133ae6e
+Source0:	http://www.xfce.org/archive/xfce-%{xfce_version}/src/%{name}-%{version}%{_pre}.tar.bz2
+# Source0-md5:	53087545a5bf6bdac0174a4628722c21
 URL:		http://thunar.xfce.org/
-BuildRequires:	GConf2-devel >= 2.4.0
-BuildRequires:	dbus-glib-devel >= 0.34
+BuildRequires:	GConf2-devel >= 2.14.0
+BuildRequires:	dbus-glib-devel >= 0.62
 # XXX: gamin (>= 0.1.0) is preferred over fam
 BuildRequires:	fam-devel
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.6.4
-BuildRequires:	gtk+2-devel >= 2:2.6.0
-BuildRequires:	hal-devel >= 0.5.0
+BuildRequires:	glib2-devel >= 1:2.12.0
+BuildRequires:	gtk+2-devel >= 2:2.10.0
+BuildRequires:	hal-devel >= 0.5.7
 BuildRequires:	intltool
-BuildRequires:	libexif-devel >= 0.6.0
-BuildRequires:	libexo-devel >= 0.3.1.6
+BuildRequires:	libexif-devel >= 0.6.13
+BuildRequires:	libexo-devel >= 0.3.1.8
 BuildRequires:	libjpeg-devel
-BuildRequires:	libpng-devel >= 1.2.0
-BuildRequires:	libxfce4util-devel >= 4.2.2
+BuildRequires:	libpng-devel >= 1.2.12
+BuildRequires:	libxfce4util-devel >= %{xfce_version}
 BuildRequires:	pcre-devel >= 6.0
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	startup-notification-devel >= 0.8
+Requires(post,postun):	gtk+2 >= 2.10.0
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	hal >= 0.5.0
+Requires:	hal >= 0.5.7
 Requires:	hicolor-icon-theme
+Requires:	libexo >= 0.3.1.8
 Requires:	shared-mime-info >= 0.15
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -60,10 +63,10 @@ Summary:	Header files for Thunar libraries
 Summary(pl):	Pliki nag³ówkowe bibliotek Thunar
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	GConf2-devel >= 2.4.0
-Requires:	dbus-glib-devel >= 0.34
+Requires:	GConf2-devel >= 2.14.0
+Requires:	dbus-glib-devel >= 0.62
 Requires:	fam-devel
-Requires:	hal-devel >= 0.5.0
+Requires:	hal-devel >= 0.5.7
 Requires:	libjpeg-devel
 
 %description devel
@@ -88,6 +91,7 @@ Statyczna biblioteki Thunar
 %setup -qn %{name}-%{version}%{_pre}
 
 %build
+LDFLAGS="%{rpmldflags} -Wl,--as-needed"
 %configure \
 	%{?with_static_libs:--enable-static}
 
@@ -106,6 +110,12 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/thunarx-1/*.{a,la}
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%post
+gtk-update-icon-cache -qf %{_datadir}/icons/hicolor
+
+%postun
+gtk-update-icon-cache -qf %{_datadir}/icons/hicolor
+
 %post	libs -p /sbin/ldconfig
 %postun	libs -p /sbin/ldconfig
 
@@ -118,9 +128,11 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/ThunarBulkRename
 %attr(755,root,root) %{_libdir}/ThunarHelp
 %attr(755,root,root) %{_libdir}/thunar-vfs-mime-cleaner-1
+%attr(755,root,root) %{_libdir}/thunar-sendto-email
 %dir %{_libdir}/thunarx-1
 %attr(755,root,root) %{_libdir}/thunarx-1/*.so
 
+%{_datadir}/Thunar
 %{_datadir}/dbus-1/services/*.service
 %{_desktopdir}/*.desktop
 %{_iconsdir}/hicolor/*/*/*
@@ -136,6 +148,8 @@ rm -rf $RPM_BUILD_ROOT
 %lang(es) %{_docdir}/Thunar/html/es
 %lang(fr) %{_docdir}/Thunar/html/fr
 %lang(ja) %{_docdir}/Thunar/html/ja
+%lang(ru) %{_docdir}/Thunar/html/ru
+%lang(zh_TW) %{_docdir}/Thunar/html/zh_TW
 
 %files libs
 %defattr(644,root,root,755)
