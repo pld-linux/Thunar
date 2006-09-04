@@ -2,17 +2,17 @@
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
 #
-%define		_pre		beta2
-%define		xfce_version	4.3.90.2
+%define		_pre		rc1
+%define		xfce_version	4.3.99.1
 Summary:	Xfce file manager
 Summary(pl):	Zarz±dca plików Xfce
 Name:		Thunar
-Version:	0.3.2
+Version:	0.4.0
 Release:	0.%{_pre}.1
 License:	GPL v2 / LGPL v2
-Group:		Applications
+Group:		X11/Applications
 Source0:	http://www.xfce.org/archive/xfce-%{xfce_version}/src/%{name}-%{version}%{_pre}.tar.bz2
-# Source0-md5:	53087545a5bf6bdac0174a4628722c21
+# Source0-md5:	b07ae97a69964112e0af84ba2f63585d
 URL:		http://thunar.xfce.org/
 BuildRequires:	GConf2-devel >= 2.14.0
 BuildRequires:	dbus-glib-devel >= 0.62
@@ -24,19 +24,20 @@ BuildRequires:	gtk+2-devel >= 2:2.10.0
 BuildRequires:	hal-devel >= 0.5.7
 BuildRequires:	intltool
 BuildRequires:	libexif-devel >= 0.6.13
-BuildRequires:	libexo-devel >= 0.3.1.8
+BuildRequires:	libexo-devel >= 0.3.1.10
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel >= 1.2.12
 BuildRequires:	libxfce4util-devel >= %{xfce_version}
 BuildRequires:	pcre-devel >= 6.0
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
+BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	startup-notification-devel >= 0.8
-Requires(post,postun):	gtk+2 >= 2.10.0
 Requires:	%{name}-libs = %{version}-%{release}
+Requires(post,postun):	gtk+2 >= 2:2.10.0
 Requires:	hal >= 0.5.7
-Requires:	hicolor-icon-theme
-Requires:	libexo >= 0.3.1.8
+Requires(post,postun):	hicolor-icon-theme
+Requires:	libexo >= 0.3.1.10
 Requires:	shared-mime-info >= 0.15
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -91,7 +92,6 @@ Statyczna biblioteki Thunar
 %setup -qn %{name}-%{version}%{_pre}
 
 %build
-LDFLAGS="%{rpmldflags} -Wl,--as-needed"
 %configure \
 	%{?with_static_libs:--enable-static}
 
@@ -111,10 +111,10 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/thunarx-1/*.{a,la}
 rm -rf $RPM_BUILD_ROOT
 
 %post
-gtk-update-icon-cache -qf %{_datadir}/icons/hicolor
+%update_icon_cache hicolor
 
 %postun
-gtk-update-icon-cache -qf %{_datadir}/icons/hicolor
+%update_icon_cache hicolor
 
 %post	libs -p /sbin/ldconfig
 %postun	libs -p /sbin/ldconfig
@@ -127,22 +127,26 @@ gtk-update-icon-cache -qf %{_datadir}/icons/hicolor
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/xdg/Thunar/*.xml
 %attr(755,root,root) %{_libdir}/ThunarBulkRename
 %attr(755,root,root) %{_libdir}/ThunarHelp
-%attr(755,root,root) %{_libdir}/thunar-vfs-mime-cleaner-1
+%attr(755,root,root) %{_libdir}/thunar-vfs-*
 %attr(755,root,root) %{_libdir}/thunar-sendto-email
 %dir %{_libdir}/thunarx-1
 %attr(755,root,root) %{_libdir}/thunarx-1/*.so
+%attr(755,root,root) %{_libdir}/xfce4/panel-plugins/thunar-tpa
 
 %{_datadir}/Thunar
+%{_datadir}/xfce4/panel-plugins/*.desktop
 %{_datadir}/dbus-1/services/*.service
 %{_desktopdir}/*.desktop
 %{_iconsdir}/hicolor/*/*/*
 %{_pixmapsdir}/Thunar
+%{_mandir}/man1/Thunar*
 
 %dir %{_docdir}/Thunar
 # move it to proper place
 %{_docdir}/Thunar/README*
 
 %dir %{_docdir}/Thunar/html
+%{_docdir}/Thunar/*.txt
 %{_docdir}/Thunar/html/C
 %{_docdir}/Thunar/html/*.css
 %lang(es) %{_docdir}/Thunar/html/es
