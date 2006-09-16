@@ -68,6 +68,7 @@ Requires:	GConf2-devel >= 2.14.0
 Requires:	dbus-glib-devel >= 0.62
 Requires:	fam-devel
 Requires:	hal-devel >= 0.5.7
+Requires:	libexo-devel >= 0.3.1.10
 Requires:	libjpeg-devel
 
 %description devel
