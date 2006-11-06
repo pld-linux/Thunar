@@ -2,29 +2,29 @@
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
 #
-%define		_pre		rc1
-%define		xfce_version	4.3.99.1
+%define		_pre		rc2
+%define		xfce_version	4.3.99.2
 Summary:	Xfce file manager
 Summary(pl):	Zarz±dca plików Xfce
 Name:		Thunar
-Version:	0.4.0
+Version:	0.5.0
 Release:	0.%{_pre}.1
 License:	GPL v2 / LGPL v2
 Group:		X11/Applications
 Source0:	http://www.xfce.org/archive/xfce-%{xfce_version}/src/%{name}-%{version}%{_pre}.tar.bz2
-# Source0-md5:	b07ae97a69964112e0af84ba2f63585d
+# Source0-md5:	c97f6a011eb72b8653ad799290c71d52
 URL:		http://thunar.xfce.org/
-BuildRequires:	GConf2-devel >= 2.14.0
+BuildRequires:	GConf2-devel >= 2.16.0
 BuildRequires:	dbus-glib-devel >= 0.62
 # XXX: gamin (>= 0.1.0) is preferred over fam
 BuildRequires:	fam-devel
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.12.0
-BuildRequires:	gtk+2-devel >= 2:2.10.0
+BuildRequires:	glib2-devel >= 1:2.12.4
+BuildRequires:	gtk+2-devel >= 2:2.10.6
 BuildRequires:	hal-devel >= 0.5.7
 BuildRequires:	intltool
 BuildRequires:	libexif-devel >= 0.6.13
-BuildRequires:	libexo-devel >= 0.3.1.10
+BuildRequires:	libexo-devel >= 0.3.1.12
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel >= 1.2.12
 BuildRequires:	libxfce4util-devel >= %{xfce_version}
@@ -33,11 +33,12 @@ BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	startup-notification-devel >= 0.8
+BuildRequires:	xfce4-panel-devel >= %{xfce_version}
 Requires:	%{name}-libs = %{version}-%{release}
-Requires(post,postun):	gtk+2 >= 2:2.10.0
+Requires(post,postun):	gtk+2 >= 2:2.10.6
 Requires:	hal >= 0.5.7
 Requires(post,postun):	hicolor-icon-theme
-Requires:	libexo >= 0.3.1.10
+Requires:	libexo >= 0.3.1.12
 Requires:	shared-mime-info >= 0.15
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -64,11 +65,11 @@ Summary:	Header files for Thunar libraries
 Summary(pl):	Pliki nag³ówkowe bibliotek Thunar
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	GConf2-devel >= 2.14.0
+Requires:	GConf2-devel >= 2.16.0
 Requires:	dbus-glib-devel >= 0.62
 Requires:	fam-devel
 Requires:	hal-devel >= 0.5.7
-Requires:	libexo-devel >= 0.3.1.10
+Requires:	libexo-devel >= 0.3.1.12
 Requires:	libjpeg-devel
 
 %description devel
@@ -78,8 +79,8 @@ This is the package containing the header files for Thunar libraries.
 Ten pakiet zawiera pliki nag³ówkowe biblioteki Thunar.
 
 %package static
-Summary:	Static Thunar library
-Summary(pl):	Statyczna biblioteka libraries
+Summary:	Static Thunar libraries
+Summary(pl):	Statyczne biblioteki Thunar
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
@@ -87,15 +88,20 @@ Requires:	%{name}-devel = %{version}-%{release}
 Static Thunar libraries.
 
 %description static -l pl
-Statyczna biblioteki Thunar
+Statyczne biblioteki Thunar.
 
 %prep
 %setup -qn %{name}-%{version}%{_pre}
 
 %build
 %configure \
+	--enable-dbus \
+	--enable-exif \
+	--enable-gnome-thumbnailers \
+	--enable-pcre \
+	--enable-startup-notification \
 	%{?with_static_libs:--enable-static}
-
+	
 %{__make}
 
 %install
