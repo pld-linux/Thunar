@@ -2,17 +2,16 @@
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
 #
-%define		_pre		rc2
-%define		xfce_version	4.3.99.2
+%define		xfce_version	4.4.0
 Summary:	Xfce file manager
 Summary(pl):	Zarz±dca plików Xfce
 Name:		Thunar
-Version:	0.5.0
-Release:	0.%{_pre}.2
+Version:	0.8.0
+Release:	1
 License:	GPL v2 / LGPL v2
 Group:		X11/Applications
-Source0:	http://www.xfce.org/archive/xfce-%{xfce_version}/src/%{name}-%{version}%{_pre}.tar.bz2
-# Source0-md5:	c97f6a011eb72b8653ad799290c71d52
+Source0:	http://www.xfce.org/archive/xfce-%{xfce_version}/src/%{name}-%{version}.tar.bz2
+# Source0-md5:	9f7b0945d6a235391049f6818fb4d188
 URL:		http://thunar.xfce.org/
 BuildRequires:	GConf2-devel >= 2.16.0
 BuildRequires:	dbus-glib-devel >= 0.62
@@ -21,10 +20,11 @@ BuildRequires:	fam-devel
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.12.4
 BuildRequires:	gtk+2-devel >= 2:2.10.6
+BuildRequires:	gtk-doc >= 1.7
 BuildRequires:	hal-devel >= 0.5.7
 BuildRequires:	intltool
 BuildRequires:	libexif-devel >= 0.6.13
-BuildRequires:	libexo-devel >= 0.3.1.12
+BuildRequires:	libexo-devel >= 0.3.2
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel >= 1.2.12
 BuildRequires:	libxfce4util-devel >= %{xfce_version}
@@ -34,11 +34,11 @@ BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	startup-notification-devel >= 0.8
 BuildRequires:	xfce4-panel-devel >= %{xfce_version}
-Requires:	%{name}-libs = %{version}-%{release}
-Requires(post,postun):	gtk+2 >= 2:2.10.6
-Requires:	hal >= 0.5.7
+Requires(post,postun):	gtk+2
 Requires(post,postun):	hicolor-icon-theme
-Requires:	libexo >= 0.3.1.12
+Requires:	%{name}-libs = %{version}-%{release}
+Requires:	hal >= 0.5.7
+Requires:	libexo >= 0.3.2
 Requires:	shared-mime-info >= 0.15
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -48,6 +48,18 @@ Thunar is a modern file manager, aiming to be easy-to-use and fast.
 %description -l pl
 Thunar jest nowoczesnym zarz±dc± plików, nakierowanym na ³atwo¶æ i
 szybko¶æ u¿ycia.
+
+%package apidocs
+Summary:	Thunar API documentation
+Summary(pl):	Dokumentacja API Thunar
+Group:		Documentation
+Requires:	gtk-doc-common
+
+%description apidocs
+Thunar API documentation.
+
+%description apidocs -l pl
+Dokumentacja API Thunar.
 
 %package libs
 Summary:	Thunar libraries
@@ -69,7 +81,7 @@ Requires:	GConf2-devel >= 2.16.0
 Requires:	dbus-glib-devel >= 0.62
 Requires:	fam-devel
 Requires:	hal-devel >= 0.5.7
-Requires:	libexo-devel >= 0.3.1.12
+Requires:	libexo-devel >= 0.3.2
 Requires:	libjpeg-devel
 
 %description devel
@@ -91,17 +103,19 @@ Static Thunar libraries.
 Statyczne biblioteki Thunar.
 
 %prep
-%setup -qn %{name}-%{version}%{_pre}
+%setup -q
 
 %build
 %configure \
 	--enable-dbus \
 	--enable-exif \
 	--enable-gnome-thumbnailers \
+	--enable-gtk-doc \
 	--enable-pcre \
 	--enable-startup-notification \
+	--with-html-dir=%{_gtkdocdir} \
 	%{?with_static_libs:--enable-static}
-	
+
 %{__make}
 
 %install
@@ -148,6 +162,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_pixmapsdir}/Thunar
 %{_mandir}/man1/Thunar*
 
+# FIXME: maybe it's common dir?
+%dir %{_datadir}/thumbnailers
+%{_datadir}/thumbnailers/*.desktop
+
 %dir %{_docdir}/Thunar
 # move it to proper place
 %{_docdir}/Thunar/README*
@@ -157,10 +175,16 @@ rm -rf $RPM_BUILD_ROOT
 %{_docdir}/Thunar/html/C
 %{_docdir}/Thunar/html/*.css
 %lang(es) %{_docdir}/Thunar/html/es
+%lang(eu) %{_docdir}/Thunar/html/eu
 %lang(fr) %{_docdir}/Thunar/html/fr
 %lang(ja) %{_docdir}/Thunar/html/ja
+%lang(pl) %{_docdir}/Thunar/html/pl
 %lang(ru) %{_docdir}/Thunar/html/ru
 %lang(zh_TW) %{_docdir}/Thunar/html/zh_TW
+
+%files apidocs
+%defattr(644,root,root,755)
+%{_gtkdocdir}/thunar*
 
 %files libs
 %defattr(644,root,root,755)
