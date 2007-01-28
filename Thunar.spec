@@ -13,14 +13,14 @@ Group:		X11/Applications
 Source0:	http://www.xfce.org/archive/xfce-%{xfce_version}/src/%{name}-%{version}.tar.bz2
 # Source0-md5:	9f7b0945d6a235391049f6818fb4d188
 URL:		http://thunar.xfce.org/
-BuildRequires:	GConf2-devel >= 2.16.0
+BuildRequires:	GConf2-devel >= 2.14.0
 BuildRequires:	dbus-glib-devel >= 0.62
 # XXX: gamin (>= 0.1.0) is preferred over fam
 BuildRequires:	fam-devel
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.12.4
-BuildRequires:	gtk+2-devel >= 2:2.10.6
-BuildRequires:	gtk-doc >= 1.7
+BuildRequires:	glib2-devel >= 1:2.10.3
+BuildRequires:	gtk+2-devel >= 2:2.8.20
+BuildRequires:	gtk-doc >= 1.6
 BuildRequires:	hal-devel >= 0.5.7
 BuildRequires:	intltool
 BuildRequires:	libexif-devel >= 0.6.13
@@ -77,7 +77,7 @@ Summary:	Header files for Thunar libraries
 Summary(pl):	Pliki nag³ówkowe bibliotek Thunar
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	GConf2-devel >= 2.16.0
+Requires:	GConf2-devel >= 2.14.0
 Requires:	dbus-glib-devel >= 0.62
 Requires:	fam-devel
 Requires:	hal-devel >= 0.5.7
