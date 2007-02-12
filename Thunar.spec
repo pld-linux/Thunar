@@ -4,7 +4,7 @@
 #
 %define		xfce_version	4.4.0
 Summary:	Xfce file manager
-Summary(pl):	Zarz±dca plikÛw Xfce
+Summary(pl.UTF-8):   ZarzƒÖdca plik√≥w Xfce
 Name:		Thunar
 Version:	0.8.0
 Release:	1
@@ -45,36 +45,36 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Thunar is a modern file manager, aiming to be easy-to-use and fast.
 
-%description -l pl
-Thunar jest nowoczesnym zarz±dc± plikÛw, nakierowanym na ≥atwo∂Ê i
-szybko∂Ê uøycia.
+%description -l pl.UTF-8
+Thunar jest nowoczesnym zarzƒÖdcƒÖ plik√≥w, nakierowanym na ≈Çatwo≈õƒá i
+szybko≈õƒá u≈ºycia.
 
 %package apidocs
 Summary:	Thunar API documentation
-Summary(pl):	Dokumentacja API Thunar
+Summary(pl.UTF-8):   Dokumentacja API Thunar
 Group:		Documentation
 Requires:	gtk-doc-common
 
 %description apidocs
 Thunar API documentation.
 
-%description apidocs -l pl
+%description apidocs -l pl.UTF-8
 Dokumentacja API Thunar.
 
 %package libs
 Summary:	Thunar libraries
-Summary(pl):	Biblioteki Thunar
+Summary(pl.UTF-8):   Biblioteki Thunar
 Group:		Libraries
 
 %description libs
 Thunar libraries.
 
-%description libs -l pl
+%description libs -l pl.UTF-8
 Biblioteki Thunar.
 
 %package devel
 Summary:	Header files for Thunar libraries
-Summary(pl):	Pliki nag≥Ûwkowe bibliotek Thunar
+Summary(pl.UTF-8):   Pliki nag≈Ç√≥wkowe bibliotek Thunar
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	GConf2-devel >= 2.16.0
@@ -87,19 +87,19 @@ Requires:	libjpeg-devel
 %description devel
 This is the package containing the header files for Thunar libraries.
 
-%description devel -l pl
-Ten pakiet zawiera pliki nag≥Ûwkowe biblioteki Thunar.
+%description devel -l pl.UTF-8
+Ten pakiet zawiera pliki nag≈Ç√≥wkowe biblioteki Thunar.
 
 %package static
 Summary:	Static Thunar libraries
-Summary(pl):	Statyczne biblioteki Thunar
+Summary(pl.UTF-8):   Statyczne biblioteki Thunar
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static Thunar libraries.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczne biblioteki Thunar.
 
 %prep
