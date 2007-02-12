@@ -4,7 +4,7 @@
 #
 %define		xfce_version	4.4.0
 Summary:	Xfce file manager
-Summary(pl.UTF-8):   Zarządca plików Xfce
+Summary(pl.UTF-8):	Zarządca plików Xfce
 Name:		Thunar
 Version:	0.8.0
 Release:	1
@@ -51,7 +51,7 @@ szybkość użycia.
 
 %package apidocs
 Summary:	Thunar API documentation
-Summary(pl.UTF-8):   Dokumentacja API Thunar
+Summary(pl.UTF-8):	Dokumentacja API Thunar
 Group:		Documentation
 Requires:	gtk-doc-common
 
@@ -63,7 +63,7 @@ Dokumentacja API Thunar.
 
 %package libs
 Summary:	Thunar libraries
-Summary(pl.UTF-8):   Biblioteki Thunar
+Summary(pl.UTF-8):	Biblioteki Thunar
 Group:		Libraries
 
 %description libs
@@ -74,7 +74,7 @@ Biblioteki Thunar.
 
 %package devel
 Summary:	Header files for Thunar libraries
-Summary(pl.UTF-8):   Pliki nagłówkowe bibliotek Thunar
+Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek Thunar
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	GConf2-devel >= 2.16.0
@@ -92,7 +92,7 @@ Ten pakiet zawiera pliki nagłówkowe biblioteki Thunar.
 
 %package static
 Summary:	Static Thunar libraries
-Summary(pl.UTF-8):   Statyczne biblioteki Thunar
+Summary(pl.UTF-8):	Statyczne biblioteki Thunar
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
