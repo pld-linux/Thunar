@@ -1,0 +1,22 @@
+diff -urN Thunar-0.8.0/Thunar-bulk-rename.desktop.in.in Thunar-0.8.0.new/Thunar-bulk-rename.desktop.in.in
+--- Thunar-0.8.0/Thunar-bulk-rename.desktop.in.in	2007-01-20 21:39:10.000000000 +0100
++++ Thunar-0.8.0.new/Thunar-bulk-rename.desktop.in.in	2007-04-03 19:50:47.000000000 +0200
+@@ -8,6 +8,6 @@
+ Terminal=false
+ StartupNotify=true
+ Type=Application
+-Categories=Application;System;Utility;Core;GTK;Filesystem;
++Categories=System;Utility;Core;GTK;Filesystem;
+ 
+ # vi:set encoding=UTF-8:
+diff -urN Thunar-0.8.0/Thunar.desktop.in.in Thunar-0.8.0.new/Thunar.desktop.in.in
+--- Thunar-0.8.0/Thunar.desktop.in.in	2007-01-20 21:39:10.000000000 +0100
++++ Thunar-0.8.0.new/Thunar.desktop.in.in	2007-04-03 19:52:38.000000000 +0200
+@@ -8,6 +8,6 @@
+ Terminal=false
+ StartupNotify=true
+ Type=Application
+-Categories=Application;System;Utility;Core;GTK;FileManager;
++Categories=System;Utility;Core;GTK;FileManager;
+ 
+ # vi:set encoding=UTF-8:
