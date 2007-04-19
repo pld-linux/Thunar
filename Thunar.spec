@@ -7,11 +7,12 @@ Summary:	Xfce file manager
 Summary(pl):	Zarz±dca plików Xfce
 Name:		Thunar
 Version:	0.8.0
-Release:	1
+Release:	2
 License:	GPL v2 / LGPL v2
 Group:		X11/Applications
 Source0:	http://www.xfce.org/archive/xfce-%{xfce_version}/src/%{name}-%{version}.tar.bz2
 # Source0-md5:	9f7b0945d6a235391049f6818fb4d188
+Patch0:		%{name}-desktop.patch
 URL:		http://thunar.xfce.org/
 BuildRequires:	GConf2-devel >= 2.14.0
 BuildRequires:	dbus-glib-devel >= 0.62
@@ -34,6 +35,7 @@ BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	startup-notification-devel >= 0.8
 BuildRequires:	xfce4-panel-devel >= %{xfce_version}
+Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk+2
 Requires(post,postun):	hicolor-icon-theme
 Requires:	%{name}-libs = %{version}-%{release}
@@ -104,6 +106,7 @@ Statyczne biblioteki Thunar.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure \
@@ -132,9 +135,11 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/thunarx-1/*.{a,la}
 rm -rf $RPM_BUILD_ROOT
 
 %post
+%update_desktop_database_post
 %update_icon_cache hicolor
 
 %postun
+%update_desktop_database_postun
 %update_icon_cache hicolor
 
 %post	libs -p /sbin/ldconfig
