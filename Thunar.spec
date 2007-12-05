@@ -2,17 +2,19 @@
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
 #
-%define		xfce_version	4.4.0
+%define		xfce_version	4.4.2
 Summary:	Xfce file manager
 Summary(pl.UTF-8):	Zarządca plików Xfce
 Name:		Thunar
-Version:	0.8.0
-Release:	2
+Version:	0.9.0
+Release:	1
 License:	GPL v2 / LGPL v2
 Group:		X11/Applications
 Source0:	http://www.xfce.org/archive/xfce-%{xfce_version}/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	9f7b0945d6a235391049f6818fb4d188
+# Source0-md5:	0fc5008858661c0abd0399acbe30ef28
 Patch0:		%{name}-desktop.patch
+Patch1:		%{name}-locale-names.patch
+Patch2:		%{name}-missing-audio-cds-for-volman.patch
 URL:		http://thunar.xfce.org/
 BuildRequires:	GConf2-devel >= 2.16.0
 BuildRequires:	dbus-glib-devel >= 0.62
@@ -25,7 +27,7 @@ BuildRequires:	gtk-doc >= 1.7
 BuildRequires:	hal-devel >= 0.5.7
 BuildRequires:	intltool
 BuildRequires:	libexif-devel >= 0.6.13
-BuildRequires:	libexo-devel >= 0.3.2
+BuildRequires:	libexo-devel >= 0.3.4
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel >= 1.2.12
 BuildRequires:	libxfce4util-devel >= %{xfce_version}
@@ -40,7 +42,7 @@ Requires(post,postun):	gtk+2
 Requires(post,postun):	hicolor-icon-theme
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	hal >= 0.5.7
-Requires:	libexo >= 0.3.2
+Requires:	libexo >= 0.3.4
 Requires:	shared-mime-info >= 0.15
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -83,7 +85,7 @@ Requires:	GConf2-devel >= 2.16.0
 Requires:	dbus-glib-devel >= 0.62
 Requires:	fam-devel
 Requires:	hal-devel >= 0.5.7
-Requires:	libexo-devel >= 0.3.2
+Requires:	libexo-devel >= 0.3.4
 Requires:	libjpeg-devel
 
 %description devel
@@ -107,6 +109,11 @@ Statyczne biblioteki Thunar.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
+%patch2 -p0
+
+mv -f po/{pt_PT,pt}.po
+mv -f po/{nb_NO,nb}.po
 
 %build
 %configure \
@@ -183,6 +190,7 @@ rm -rf $RPM_BUILD_ROOT
 %lang(eu) %{_docdir}/Thunar/html/eu
 %lang(fr) %{_docdir}/Thunar/html/fr
 %lang(ja) %{_docdir}/Thunar/html/ja
+%lang(nl) %{_docdir}/Thunar/html/nl
 %lang(pl) %{_docdir}/Thunar/html/pl
 %lang(ru) %{_docdir}/Thunar/html/ru
 %lang(zh_TW) %{_docdir}/Thunar/html/zh_TW
@@ -193,7 +201,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files libs
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%attr(755,root,root) %{_libdir}/lib*.so.*.*.*
 
 %files devel
 %defattr(644,root,root,755)
