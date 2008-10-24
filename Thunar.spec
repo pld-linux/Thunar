@@ -7,7 +7,7 @@ Summary:	Xfce file manager
 Summary(pl.UTF-8):	Zarządca plików Xfce
 Name:		Thunar
 Version:	0.9.0
-Release:	1
+Release:	2
 License:	GPL v2 / LGPL v2
 Group:		X11/Applications
 Source0:	http://www.xfce.org/archive/xfce-%{xfce_version}/src/%{name}-%{version}.tar.bz2
@@ -18,8 +18,7 @@ Patch2:		%{name}-missing-audio-cds-for-volman.patch
 URL:		http://thunar.xfce.org/
 BuildRequires:	GConf2-devel >= 2.16.0
 BuildRequires:	dbus-glib-devel >= 0.62
-# XXX: gamin (>= 0.1.0) is preferred over fam
-BuildRequires:	fam-devel
+BuildRequires:	gamin-devel >= 0.1.0
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.12.4
 BuildRequires:	gtk+2-devel >= 2:2.10.6
@@ -83,7 +82,7 @@ Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	GConf2-devel >= 2.16.0
 Requires:	dbus-glib-devel >= 0.62
-Requires:	fam-devel
+Requires:	gamin-devel
 Requires:	hal-devel >= 0.5.7
 Requires:	libexo-devel >= 0.3.4
 Requires:	libjpeg-devel
