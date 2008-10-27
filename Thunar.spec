@@ -2,16 +2,16 @@
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
 #
-%define		xfce_version	4.4.2
+%define		xfce_version	4.4.3
 Summary:	Xfce file manager
 Summary(pl.UTF-8):	Zarządca plików Xfce
 Name:		Thunar
-Version:	0.9.0
-Release:	3
+Version:	0.9.3
+Release:	1
 License:	GPL v2 / LGPL v2
 Group:		X11/Applications
 Source0:	http://www.xfce.org/archive/xfce-%{xfce_version}/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	0fc5008858661c0abd0399acbe30ef28
+# Source0-md5:	438b0d55ac9ecabdb58f84c4c039ae5c
 Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-locale-names.patch
 Patch2:		%{name}-missing-audio-cds-for-volman.patch
