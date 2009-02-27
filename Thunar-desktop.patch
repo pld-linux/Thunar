@@ -1,6 +1,6 @@
-diff -urN Thunar-0.8.0/Thunar-bulk-rename.desktop.in.in Thunar-0.8.0.new/Thunar-bulk-rename.desktop.in.in
---- Thunar-0.8.0/Thunar-bulk-rename.desktop.in.in	2007-01-20 21:39:10.000000000 +0100
-+++ Thunar-0.8.0.new/Thunar-bulk-rename.desktop.in.in	2007-04-03 19:50:47.000000000 +0200
+diff -urN Thunar-1.0.0/Thunar-bulk-rename.desktop.in.in Thunar-1.0.0.new/Thunar-bulk-rename.desktop.in.in
+--- Thunar-1.0.0/Thunar-bulk-rename.desktop.in.in	2008-10-22 08:43:23.000000000 +0200
++++ Thunar-1.0.0.new/Thunar-bulk-rename.desktop.in.in	2009-02-27 21:39:10.000000000 +0100
 @@ -8,6 +8,6 @@
  Terminal=false
  StartupNotify=true
@@ -9,9 +9,9 @@ diff -urN Thunar-0.8.0/Thunar-bulk-rename.desktop.in.in Thunar-0.8.0.new/Thunar-
 +Categories=System;Utility;Core;GTK;Filesystem;
  
  # vi:set encoding=UTF-8:
-diff -urN Thunar-0.8.0/Thunar.desktop.in.in Thunar-0.8.0.new/Thunar.desktop.in.in
---- Thunar-0.8.0/Thunar.desktop.in.in	2007-01-20 21:39:10.000000000 +0100
-+++ Thunar-0.8.0.new/Thunar.desktop.in.in	2007-04-03 19:52:38.000000000 +0200
+diff -urN Thunar-1.0.0/Thunar.desktop.in.in Thunar-1.0.0.new/Thunar.desktop.in.in
+--- Thunar-1.0.0/Thunar.desktop.in.in	2009-01-12 21:38:49.000000000 +0100
++++ Thunar-1.0.0.new/Thunar.desktop.in.in	2009-02-27 21:39:21.000000000 +0100
 @@ -8,6 +8,6 @@
  Terminal=false
  StartupNotify=true
