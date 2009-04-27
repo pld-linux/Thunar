@@ -2,16 +2,16 @@
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
 #
-%define		xfce_version	4.6.0
+%define		xfce_version	4.6.1
 Summary:	Xfce file manager
 Summary(pl.UTF-8):	Zarządca plików Xfce
 Name:		Thunar
-Version:	1.0.0
+Version:	1.0.1
 Release:	1
 License:	GPL v2 / LGPL v2
 Group:		X11/Applications
 Source0:	http://www.xfce.org/archive/xfce-%{xfce_version}/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	468c240a4f65a217ec2b6132e85cd84e
+# Source0-md5:	218373aa45d74b6ba8c69c4d5af3bb19
 Patch0:		%{name}-desktop.patch
 URL:		http://thunar.xfce.org/
 BuildRequires:	GConf2-devel >= 2.16.0
@@ -133,10 +133,6 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-mv $RPM_BUILD_ROOT%{_datadir}/locale/pt{_PT,}
-mv $RPM_BUILD_ROOT%{_datadir}/locale/nb{_NO,}
-mv $RPM_BUILD_ROOT%{_datadir}/locale/nn{_NO,}
-
 rm -f $RPM_BUILD_ROOT%{_libdir}/thunarx-1/*.{a,la}
 
 %find_lang %{name} --all-name
@@ -189,9 +185,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_docdir}/Thunar/*.txt
 %{_docdir}/Thunar/html/C
 %{_docdir}/Thunar/html/*.css
+%lang(da) %{_docdir}/Thunar/html/da
 %lang(es) %{_docdir}/Thunar/html/es
 %lang(eu) %{_docdir}/Thunar/html/eu
 %lang(fr) %{_docdir}/Thunar/html/fr
+%lang(gl) %{_docdir}/Thunar/html/gl
+%lang(it) %{_docdir}/Thunar/html/it
 %lang(ja) %{_docdir}/Thunar/html/ja
 %lang(nl) %{_docdir}/Thunar/html/nl
 %lang(pl) %{_docdir}/Thunar/html/pl
