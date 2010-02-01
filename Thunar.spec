@@ -19,6 +19,7 @@ BuildRequires:	GConf2-devel >= 2.16.0
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.8
 BuildRequires:	dbus-glib-devel >= 0.62
+BuildRequires:	docbook-dtd412-xml
 BuildRequires:	exo-devel >= 0.3.100
 BuildRequires:	gamin-devel >= 0.1.0
 BuildRequires:	gettext-devel
@@ -38,6 +39,7 @@ BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	startup-notification-devel >= 0.8
+BuildRequires:	xfce4-dev-tools
 BuildRequires:	xfce4-panel-devel >= %{xfce_version}
 BuildRequires:	xfconf-devel >= %{xfce_version}
 Requires(post,postun):	desktop-file-utils
