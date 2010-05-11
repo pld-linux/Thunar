@@ -1,33 +1,36 @@
 diff -urN Thunar-1.0.0/Thunar-bulk-rename.desktop.in.in Thunar-1.0.0.new/Thunar-bulk-rename.desktop.in.in
 --- Thunar-1.0.0/Thunar-bulk-rename.desktop.in.in	2008-10-22 08:43:23.000000000 +0200
 +++ Thunar-1.0.0.new/Thunar-bulk-rename.desktop.in.in	2009-02-27 21:39:10.000000000 +0100
-@@ -8,6 +8,6 @@
+@@ -8,6 +8,7 @@
  Terminal=false
  StartupNotify=true
  Type=Application
 -Categories=Application;System;Utility;Core;GTK;Filesystem;
 +Categories=X-XFCE;System;Utility;Core;GTK;Filesystem;
++OnlyShowIn=XFCE;
  
  # vi:set encoding=UTF-8:
 diff -urN Thunar-1.0.0/Thunar.desktop.in.in Thunar-1.0.0.new/Thunar.desktop.in.in
 --- Thunar-1.0.0/Thunar.desktop.in.in	2009-01-12 21:38:49.000000000 +0100
 +++ Thunar-1.0.0.new/Thunar.desktop.in.in	2009-02-27 21:39:21.000000000 +0100
-@@ -8,6 +8,6 @@
+@@ -8,6 +8,7 @@
  Terminal=false
  StartupNotify=true
  Type=Application
 -Categories=Application;System;Utility;Core;GTK;FileManager;
 +Categories=X-XFCE;System;Utility;Core;GTK;FileManager;
++OnlyShowIn=XFCE;
  
  # vi:set encoding=UTF-8:
 --- Thunar-1.0.1/Thunar-folder-handler.desktop.in.in~	2008-10-22 08:43:23.000000000 +0200
 +++ Thunar-1.0.1/Thunar-folder-handler.desktop.in.in	2010-05-11 12:17:08.053352282 +0200
-@@ -10,7 +10,7 @@
+@@ -10,7 +10,8 @@
  Terminal=false
  StartupNotify=true
  Type=Application
 -Categories=System;Utility;Core;GTK;FileManager;
 +Categories=X-XFCE;System;Utility;Core;GTK;FileManager;
++OnlyShowIn=XFCE;
  MimeType=x-directory/gnome-default-handler;x-directory/normal;inode/directory;
  
  # vi:set encoding=UTF-8:
