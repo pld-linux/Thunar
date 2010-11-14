@@ -2,18 +2,17 @@
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
 #
-%define		xfce_version	4.6.1
+%define		xfce_version	4.6.2
 Summary:	Xfce file manager
 Summary(pl.UTF-8):	Zarządca plików Xfce
 Name:		Thunar
-Version:	1.0.1
-Release:	8
+Version:	1.0.2
+Release:	1
 License:	GPL v2 / LGPL v2
 Group:		X11/Applications
 Source0:	http://www.xfce.org/archive/xfce-%{xfce_version}/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	218373aa45d74b6ba8c69c4d5af3bb19
+# Source0-md5:	c91073202d373a1f9951a1240083c36d
 Patch0:		%{name}-desktop.patch
-Patch1:		%{name}-libpng.patch
 URL:		http://thunar.xfce.org/
 BuildRequires:	GConf2-devel >= 2.16.0
 BuildRequires:	autoconf >= 2.50
@@ -110,7 +109,6 @@ Statyczne biblioteki Thunar.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 %{__gtkdocize}
