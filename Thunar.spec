@@ -138,6 +138,8 @@ rm -rf $RPM_BUILD_ROOT
 
 rm -f $RPM_BUILD_ROOT%{_libdir}/thunarx-1/*.{a,la}
 
+rm -r $RPM_BUILD_ROOT%{_datadir}/locale/ur_PK
+
 %find_lang %{name} --all-name
 
 %clean
