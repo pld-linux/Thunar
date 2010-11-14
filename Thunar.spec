@@ -2,38 +2,37 @@
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
 #
-%define		xfce_version	4.6.1
+%define		xfce_version	4.7.0
+
 Summary:	Xfce file manager
 Summary(pl.UTF-8):	Zarządca plików Xfce
 Name:		Thunar
-Version:	1.0.1
-Release:	8
+Version:	1.1.4
+Release:	0.1
 License:	GPL v2 / LGPL v2
 Group:		X11/Applications
-Source0:	http://www.xfce.org/archive/xfce-%{xfce_version}/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	218373aa45d74b6ba8c69c4d5af3bb19
+Source0:	http://www.xfce.org/archive/xfce/4.8pre1/src/%{name}-%{version}.tar.bz2
+# Source0-md5:	54b75dd74dfdd70f3b9fd2d59363de8a
 Patch0:		%{name}-desktop.patch
-Patch1:		%{name}-libpng.patch
 URL:		http://thunar.xfce.org/
 BuildRequires:	GConf2-devel >= 2.16.0
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.8
 BuildRequires:	dbus-glib-devel >= 0.62
 BuildRequires:	docbook-dtd412-xml
-BuildRequires:	exo-devel >= 0.3.100
+BuildRequires:	exo-devel >= 0.5.4
 BuildRequires:	gamin-devel >= 0.1.0
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.12.4
 BuildRequires:	gtk+2-devel >= 2:2.10.6
 BuildRequires:	gtk-doc >= 1.7
-BuildRequires:	hal-devel >= 0.5.7
 BuildRequires:	intltool
 BuildRequires:	libexif-devel >= 0.6.13
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel >= 1.2.12
 BuildRequires:	libtool
 BuildRequires:	libxfce4util-devel >= %{xfce_version}
-BuildRequires:	libxfcegui4-devel >= %{xfce_version}
+BuildRequires:	libxfce4ui-devel >= %{xfce_version}
 BuildRequires:	pcre-devel >= 6.0
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
@@ -110,7 +109,6 @@ Statyczne biblioteki Thunar.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 %{__gtkdocize}
@@ -138,7 +136,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-rm -f $RPM_BUILD_ROOT%{_libdir}/thunarx-1/*.{a,la}
+rm $RPM_BUILD_ROOT%{_libdir}/thunarx-2/*.{a,la}
 
 %find_lang %{name} --all-name
 
@@ -162,13 +160,13 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %dir %{_sysconfdir}/xdg/Thunar
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/xdg/Thunar/*.xml
-%attr(755,root,root) %{_libdir}/ThunarBulkRename
-%attr(755,root,root) %{_libdir}/ThunarHelp
-%attr(755,root,root) %{_libdir}/thunar-vfs-*
-%attr(755,root,root) %{_libdir}/thunar-sendto-email
-%dir %{_libdir}/thunarx-1
-%attr(755,root,root) %{_libdir}/thunarx-1/*.so
-%attr(755,root,root) %{_libdir}/xfce4/panel-plugins/thunar-tpa
+%dir %{_libdir}/Thunar
+%attr(755,root,root) %{_libdir}/Thunar/ThunarBulkRename
+%attr(755,root,root) %{_libdir}/Thunar/ThunarHelp
+%attr(755,root,root) %{_libdir}/Thunar/thunar-sendto-email
+%dir %{_libdir}/thunarx-2
+%attr(755,root,root) %{_libdir}/thunarx-2/*.so
+%attr(755,root,root) %{_libdir}/xfce4/panel/plugins/libthunar-tpa.so
 
 %{_datadir}/Thunar
 %{_datadir}/xfce4/panel-plugins/*.desktop
@@ -178,16 +176,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_pixmapsdir}/Thunar
 %{_mandir}/man1/Thunar*
 
-# FIXME: maybe it's common dir?
-%dir %{_datadir}/thumbnailers
-%{_datadir}/thumbnailers/*.desktop
-
 %dir %{_docdir}/Thunar
 # move it to proper place
 %{_docdir}/Thunar/README*
 
 %dir %{_docdir}/Thunar/html
-%{_docdir}/Thunar/*.txt
 %{_docdir}/Thunar/html/C
 %{_docdir}/Thunar/html/*.css
 %lang(da) %{_docdir}/Thunar/html/da
@@ -205,30 +198,22 @@ rm -rf $RPM_BUILD_ROOT
 
 %files apidocs
 %defattr(644,root,root,755)
-%{_gtkdocdir}/thunar-vfs
 %{_gtkdocdir}/thunarx
 
 %files libs
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libthunar-vfs-1.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libthunar-vfs-1.so.2
-%attr(755,root,root) %{_libdir}/libthunarx-1.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libthunarx-1.so.2
+%attr(755,root,root) %{_libdir}/libthunarx-2.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libthunarx-2.so.0
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libthunar-vfs-1.so
-%attr(755,root,root) %{_libdir}/libthunarx-1.so
-%{_libdir}/libthunar-vfs-1.la
-%{_libdir}/libthunarx-1.la
-%{_includedir}/thunar-vfs-1
-%{_includedir}/thunarx-1
-%{_pkgconfigdir}/thunar-vfs-1.pc
-%{_pkgconfigdir}/thunarx-1.pc
+%attr(755,root,root) %{_libdir}/libthunarx-2.so
+%{_libdir}/libthunarx-2.la
+%{_includedir}/thunarx-2
+%{_pkgconfigdir}/thunarx-2.pc
 
 %if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/libthunar-vfs-1.a
-%{_libdir}/libthunarx-1.a
+%{_libdir}/libthunarx-2.a
 %endif
