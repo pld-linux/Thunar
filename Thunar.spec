@@ -2,52 +2,48 @@
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
 #
-%define		xfce_version	4.7.0
+%define		xfce_version	4.8.0
 
 Summary:	Xfce file manager
 Summary(pl.UTF-8):	Zarządca plików Xfce
 Name:		Thunar
-Version:	1.1.4
+Version:	1.2.0
 Release:	0.1
 License:	GPL v2 / LGPL v2
 Group:		X11/Applications
-Source0:	http://www.xfce.org/archive/xfce/4.8pre1/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	54b75dd74dfdd70f3b9fd2d59363de8a
+Source0:	http://archive.xfce.org/xfce/4.8/src/%{name}-%{version}.tar.bz2
+# Source0-md5:	3f270cfbb83a057e6db46cdea549af8b
 Patch0:		%{name}-desktop.patch
 URL:		http://thunar.xfce.org/
-BuildRequires:	GConf2-devel >= 2.16.0
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.8
 BuildRequires:	dbus-glib-devel >= 0.62
 BuildRequires:	docbook-dtd412-xml
-BuildRequires:	exo-devel >= 0.5.4
-BuildRequires:	gamin-devel >= 0.1.0
+BuildRequires:	exo-devel >= 0.6.0
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.12.4
-BuildRequires:	gtk+2-devel >= 2:2.10.6
+BuildRequires:	glib2-devel >= 1:2.18.0
+BuildRequires:	gtk+2-devel >= 2:2.14.0
 BuildRequires:	gtk-doc >= 1.7
 BuildRequires:	intltool
-BuildRequires:	libexif-devel >= 0.6.13
-BuildRequires:	libjpeg-devel
-BuildRequires:	libpng-devel >= 1.2.12
+BuildRequires:	libexif-devel >= 0.6.0
+BuildRequires:	libnotify-devel >= 0.4.0
 BuildRequires:	libtool
-BuildRequires:	libxfce4util-devel >= %{xfce_version}
 BuildRequires:	libxfce4ui-devel >= %{xfce_version}
+BuildRequires:	libxfce4util-devel >= %{xfce_version}
 BuildRequires:	pcre-devel >= 6.0
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
-BuildRequires:	rpmbuild(macros) >= 1.311
+BuildRequires:	rpmbuild(macros) >= 1.601
 BuildRequires:	startup-notification-devel >= 0.8
-BuildRequires:	udev-glib-devel
-BuildRequires:	xfce4-dev-tools
+BuildRequires:	udev-glib-devel >= 145
+BuildRequires:	xfce4-dev-tools >= %{xfce_version}
 BuildRequires:	xfce4-panel-devel >= %{xfce_version}
-BuildRequires:	xfconf-devel >= %{xfce_version}
 Requires(post,postun):	desktop-file-utils
-Requires(post,postun):	gtk+2
-Requires(post,postun):	hicolor-icon-theme
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	exo >= 0.3.100
+Requires:	exo >= 0.6.0
+Requires:	hicolor-icon-theme
 Requires:	shared-mime-info >= 0.15
+Requires:	xfconf >= %{xfce_version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -121,12 +117,12 @@ Statyczne biblioteki Thunar.
 %configure \
 	--enable-dbus \
 	--enable-exif \
-	--enable-gnome-thumbnailers \
 	--enable-gtk-doc \
 	--enable-pcre \
 	--enable-startup-notification \
 	--with-html-dir=%{_gtkdocdir} \
-	%{?with_static_libs:--enable-static}
+	%{?with_static_libs:--enable-static} \
+	--disable-silent-rules
 
 %{__make}
 
@@ -137,6 +133,9 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 rm $RPM_BUILD_ROOT%{_libdir}/thunarx-2/*.{a,la}
+
+%{__rm} -r $RPM_BUILD_ROOT%{_libdir}/xfce4/panel/plugins/*.{a,la}
+%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/locale/ur_PK
 
 %find_lang %{name} --all-name
 
@@ -183,17 +182,24 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_docdir}/Thunar/html
 %{_docdir}/Thunar/html/C
 %{_docdir}/Thunar/html/*.css
+%lang(bn) %{_docdir}/Thunar/html/bn
+%lang(ca) %{_docdir}/Thunar/html/ca
 %lang(da) %{_docdir}/Thunar/html/da
+%lang(el) %{_docdir}/Thunar/html/el
 %lang(es) %{_docdir}/Thunar/html/es
 %lang(eu) %{_docdir}/Thunar/html/eu
 %lang(fr) %{_docdir}/Thunar/html/fr
 %lang(gl) %{_docdir}/Thunar/html/gl
+%lang(id) %{_docdir}/Thunar/html/id
 %lang(it) %{_docdir}/Thunar/html/it
 %lang(ja) %{_docdir}/Thunar/html/ja
 %lang(nl) %{_docdir}/Thunar/html/nl
 %lang(pl) %{_docdir}/Thunar/html/pl
 %lang(ru) %{_docdir}/Thunar/html/ru
+%lang(sv) %{_docdir}/Thunar/html/sv
 %lang(tr) %{_docdir}/Thunar/html/tr
+%lang(ug) %{_docdir}/Thunar/html/ug
+%lang(zh_CN) %{_docdir}/Thunar/html/zh_CN
 %lang(zh_TW) %{_docdir}/Thunar/html/zh_TW
 
 %files apidocs
