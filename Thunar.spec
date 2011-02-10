@@ -7,12 +7,12 @@
 Summary:	Xfce file manager
 Summary(pl.UTF-8):	Zarządca plików Xfce
 Name:		Thunar
-Version:	1.2.0
-Release:	0.1
+Version:	1.2.1
+Release:	1
 License:	GPL v2 / LGPL v2
 Group:		X11/Applications
-Source0:	http://archive.xfce.org/xfce/4.8/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	3f270cfbb83a057e6db46cdea549af8b
+Source0:	http://archive.xfce.org/src/xfce/thunar/1.2/%{name}-%{version}.tar.bz2
+# Source0-md5:	d8dce796890619d67aed0cd7ef84c7b1
 Patch0:		%{name}-desktop.patch
 URL:		http://thunar.xfce.org/
 BuildRequires:	autoconf >= 2.50
@@ -41,6 +41,7 @@ BuildRequires:	xfce4-panel-devel >= %{xfce_version}
 Requires(post,postun):	desktop-file-utils
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	exo >= 0.6.0
+Requires:	gtk-update-icon-cache
 Requires:	hicolor-icon-theme
 Requires:	shared-mime-info >= 0.15
 Requires:	xfconf >= %{xfce_version}
@@ -81,8 +82,8 @@ Summary:	Header files for Thunar libraries
 Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek Thunar
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	exo-devel >= 0.3.100
-Requires:	gtk+2-devel >= 2:2.10.6
+Requires:	exo-devel >= 0.6.0
+Requires:	gtk+2-devel >= 2:2.14.0
 
 %description devel
 This is the package containing the header files for Thunar libraries.
@@ -132,9 +133,10 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-rm $RPM_BUILD_ROOT%{_libdir}/thunarx-2/*.{a,la}
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/thunarx-2/*.{a,la}
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/xfce4/panel/plugins/*.{a,la}
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 
-%{__rm} -r $RPM_BUILD_ROOT%{_libdir}/xfce4/panel/plugins/*.{a,la}
 %{__rm} -r $RPM_BUILD_ROOT%{_datadir}/locale/ur_PK
 
 %find_lang %{name} --all-name
@@ -214,7 +216,6 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libthunarx-2.so
-%{_libdir}/libthunarx-2.la
 %{_includedir}/thunarx-2
 %{_pkgconfigdir}/thunarx-2.pc
 
