@@ -7,7 +7,7 @@ Summary:	Xfce file manager
 Summary(pl.UTF-8):	Zarządca plików Xfce
 Name:		Thunar
 Version:	1.2.1
-Release:	1
+Release:	2
 License:	GPL v2 / LGPL v2
 Group:		X11/Applications
 Source0:	http://archive.xfce.org/src/xfce/thunar/1.2/%{name}-%{version}.tar.bz2
@@ -58,6 +58,7 @@ Summary:	Thunar API documentation
 Summary(pl.UTF-8):	Dokumentacja API Thunar
 Group:		Documentation
 Requires:	gtk-doc-common
+Obsoletes:	thunar-vfs-apidocs
 
 %description apidocs
 Thunar API documentation.
@@ -69,6 +70,7 @@ Dokumentacja API Thunar.
 Summary:	Thunar libraries
 Summary(pl.UTF-8):	Biblioteki Thunar
 Group:		X11/Libraries
+Obsoletes:	thunar-vfs
 
 %description libs
 Thunar libraries.
@@ -83,6 +85,7 @@ Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	exo-devel >= 0.6.0
 Requires:	gtk+2-devel >= 2:2.14.0
+Obsoletes:	thunar-vfs-devel
 
 %description devel
 This is the package containing the header files for Thunar libraries.
@@ -95,6 +98,7 @@ Summary:	Static Thunar libraries
 Summary(pl.UTF-8):	Statyczne biblioteki Thunar
 Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
+Obsoletes:	thunar-vfs-static
 
 %description static
 Static Thunar libraries.
