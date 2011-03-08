@@ -44,6 +44,7 @@ Requires:	gtk-update-icon-cache
 Requires:	hicolor-icon-theme
 Requires:	shared-mime-info >= 0.15
 Requires:	xfconf >= %{xfce_version}
+Suggests:	tumbler
 Obsoletes:	Thunar-thumbnailers
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
