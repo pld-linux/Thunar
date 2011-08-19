@@ -142,6 +142,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/xfce4/panel/plugins/*.{a,la}
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 
+# duplicate of ur
 %{__rm} -r $RPM_BUILD_ROOT%{_datadir}/locale/ur_PK
 
 %find_lang %{name} --all-name
