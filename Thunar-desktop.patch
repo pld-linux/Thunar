@@ -4,7 +4,7 @@ diff -urN Thunar-1.2.0/thunar/thunar-settings.desktop.in Thunar-1.2.0.new//thuna
 @@ -7,4 +7,5 @@
  Terminal=false
  Type=Application
- Categories=X-XFCE;Settings;DesktopSettings;X-XfceSettingsDialog;
+ Categories=XFCE;GTK;Settings;DesktopSettings;X-XFCE-SettingsDialog;X-XFCE-PersonalSettings;
 +OnlyShowIn=XFCE;
  StartupNotify=true
 diff -urN Thunar-1.2.0/Thunar-bulk-rename.desktop.in.in Thunar-1.2.0.new//Thunar-bulk-rename.desktop.in.in
@@ -15,7 +15,7 @@ diff -urN Thunar-1.2.0/Thunar-bulk-rename.desktop.in.in Thunar-1.2.0.new//Thunar
  StartupNotify=true
  Type=Application
 -Categories=System;Utility;Core;GTK;Filesystem;
-+Categories=X-XFCE;System;Utility;Core;GTK;Filesystem;
++Categories=XFCE;System;Utility;Core;GTK;Filesystem;
 +OnlyShowIn=XFCE;
  
  # vi:set encoding=UTF-8:
@@ -28,7 +28,7 @@ diff -urN Thunar-1.2.0/Thunar.desktop.in.in Thunar-1.2.0.new//Thunar.desktop.in.
  Type=Application
 -Categories=System;Utility;Core;GTK;FileTools;FileManager;
 -
-+Categories=X-XFCE;System;Utility;Core;GTK;FileTools;FileManager;
++Categories=XFCE;System;Utility;Core;GTK;FileTools;FileManager;
 +OnlyShowIn=XFCE;
  # vi:set encoding=UTF-8:
 diff -urN Thunar-1.2.0/Thunar-folder-handler.desktop.in.in Thunar-1.2.0.new//Thunar-folder-handler.desktop.in.in
@@ -39,7 +39,7 @@ diff -urN Thunar-1.2.0/Thunar-folder-handler.desktop.in.in Thunar-1.2.0.new//Thu
  StartupNotify=true
  Type=Application
 -Categories=System;Utility;Core;GTK;FileTools;FileManager;
-+Categories=X-XFCE;System;Utility;Core;GTK;FileTools;FileManager;
++Categories=XFCE;System;Utility;Core;GTK;FileTools;FileManager;
  MimeType=inode/directory;
 -
 +OnlyShowIn=XFCE;
