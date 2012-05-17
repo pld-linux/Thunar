@@ -169,7 +169,7 @@ rm -rf $RPM_BUILD_ROOT
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/xdg/Thunar/*.xml
 %dir %{_libdir}/Thunar
 %attr(755,root,root) %{_libdir}/Thunar/ThunarBulkRename
-%attr(755,root,root) %{_libdir}/Thunar/ThunarHelp
+#%attr(755,root,root) %{_libdir}/Thunar/ThunarHelp
 %attr(755,root,root) %{_libdir}/Thunar/thunar-sendto-email
 %dir %{_libdir}/thunarx-2
 %attr(755,root,root) %{_libdir}/thunarx-2/*.so
@@ -186,29 +186,6 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_docdir}/Thunar
 # move it to proper place
 %{_docdir}/Thunar/README*
-
-%dir %{_docdir}/Thunar/html
-%{_docdir}/Thunar/html/C
-%{_docdir}/Thunar/html/*.css
-%lang(bn) %{_docdir}/Thunar/html/bn
-%lang(ca) %{_docdir}/Thunar/html/ca
-%lang(da) %{_docdir}/Thunar/html/da
-%lang(el) %{_docdir}/Thunar/html/el
-%lang(es) %{_docdir}/Thunar/html/es
-%lang(eu) %{_docdir}/Thunar/html/eu
-%lang(fr) %{_docdir}/Thunar/html/fr
-%lang(gl) %{_docdir}/Thunar/html/gl
-%lang(id) %{_docdir}/Thunar/html/id
-%lang(it) %{_docdir}/Thunar/html/it
-%lang(ja) %{_docdir}/Thunar/html/ja
-%lang(nl) %{_docdir}/Thunar/html/nl
-%lang(pl) %{_docdir}/Thunar/html/pl
-%lang(ru) %{_docdir}/Thunar/html/ru
-%lang(sv) %{_docdir}/Thunar/html/sv
-%lang(tr) %{_docdir}/Thunar/html/tr
-%lang(ug) %{_docdir}/Thunar/html/ug
-%lang(zh_CN) %{_docdir}/Thunar/html/zh_CN
-%lang(zh_TW) %{_docdir}/Thunar/html/zh_TW
 
 %files apidocs
 %defattr(644,root,root,755)
