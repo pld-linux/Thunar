@@ -169,7 +169,6 @@ rm -rf $RPM_BUILD_ROOT
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/xdg/Thunar/*.xml
 %dir %{_libdir}/Thunar
 %attr(755,root,root) %{_libdir}/Thunar/ThunarBulkRename
-#%attr(755,root,root) %{_libdir}/Thunar/ThunarHelp
 %attr(755,root,root) %{_libdir}/Thunar/thunar-sendto-email
 %dir %{_libdir}/thunarx-2
 %attr(755,root,root) %{_libdir}/thunarx-2/*.so
