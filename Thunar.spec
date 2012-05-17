@@ -2,23 +2,23 @@
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
 #
-%define		xfce_version	4.8.0
+%define		xfce_version	4.10.0
 Summary:	Xfce file manager
 Summary(pl.UTF-8):	Zarządca plików Xfce
 Name:		Thunar
-Version:	1.2.3
-Release:	2
+Version:	1.4.0
+Release:	1
 License:	GPL v2 / LGPL v2
 Group:		X11/Applications
-Source0:	http://archive.xfce.org/src/xfce/thunar/1.2/%{name}-%{version}.tar.bz2
-# Source0-md5:	0a2c36cdd3cb3a2ab52cbf6055415b85
+Source0:	http://archive.xfce.org/src/xfce/thunar/1.4/%{name}-%{version}.tar.bz2
+# Source0-md5:	737ad2c36ed36b10fef82e860b9e990a
 Patch0:		%{name}-desktop.patch
 URL:		http://thunar.xfce.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.8
 BuildRequires:	dbus-glib-devel >= 0.62
 BuildRequires:	docbook-dtd412-xml
-BuildRequires:	exo-devel >= 0.6.0
+BuildRequires:	exo-devel >= 0.8.0
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.18.0
 BuildRequires:	gtk+2-devel >= 2:2.14.0
@@ -39,7 +39,7 @@ BuildRequires:	xfce4-dev-tools >= %{xfce_version}
 BuildRequires:	xfce4-panel-devel >= %{xfce_version}
 Requires(post,postun):	desktop-file-utils
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	exo >= 0.6.0
+Requires:	exo >= 0.8.0
 Requires:	gtk-update-icon-cache
 Requires:	hicolor-icon-theme
 Requires:	shared-mime-info >= 0.15
