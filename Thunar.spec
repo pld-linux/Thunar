@@ -1,24 +1,24 @@
 #
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
-#
+
 %define		xfce_version	4.10.0
 Summary:	Xfce file manager
 Summary(pl.UTF-8):	Zarządca plików Xfce
 Name:		Thunar
-Version:	1.4.0
+Version:	1.6.2
 Release:	1
 License:	GPL v2 / LGPL v2
 Group:		X11/Applications
-Source0:	http://archive.xfce.org/src/xfce/thunar/1.4/%{name}-%{version}.tar.bz2
-# Source0-md5:	737ad2c36ed36b10fef82e860b9e990a
+Source0:	http://archive.xfce.org/src/xfce/thunar/1.6/%{name}-%{version}.tar.bz2
+# Source0-md5:	a446103ab90855cc8ba484dfeedb82d8
 Patch0:		%{name}-desktop.patch
 URL:		http://thunar.xfce.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.8
 BuildRequires:	dbus-glib-devel >= 0.62
 BuildRequires:	docbook-dtd412-xml
-BuildRequires:	exo-devel >= 0.8.0
+BuildRequires:	exo-devel >= 0.10.0
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.18.0
 BuildRequires:	gtk+2-devel >= 2:2.14.0
@@ -112,6 +112,8 @@ Statyczne biblioteki Thunar.
 %setup -q
 %patch0 -p1
 
+%{__sed} -i -e 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/' configure.ac
+
 %build
 %{__gtkdocize}
 %{__intltoolize}
@@ -134,7 +136,6 @@ Statyczne biblioteki Thunar.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
