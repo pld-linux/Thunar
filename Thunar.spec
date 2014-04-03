@@ -7,7 +7,7 @@ Summary:	Xfce file manager
 Summary(pl.UTF-8):	Zarządca plików Xfce
 Name:		Thunar
 Version:	1.6.2
-Release:	2
+Release:	3
 License:	GPL v2 / LGPL v2
 Group:		X11/Applications
 Source0:	http://archive.xfce.org/src/xfce/thunar/1.6/%{name}-%{version}.tar.bz2
@@ -61,6 +61,9 @@ Summary(pl.UTF-8):	Dokumentacja API Thunar
 Group:		Documentation
 Requires:	gtk-doc-common
 Obsoletes:	thunar-vfs-apidocs
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description apidocs
 Thunar API documentation.
@@ -144,7 +147,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 
 # duplicate of ur
-%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/locale/ur_PK
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/ur_PK
 
 %find_lang %{name} --all-name
 
