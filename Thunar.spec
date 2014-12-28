@@ -19,7 +19,7 @@ BuildRequires:	automake >= 1:1.8
 BuildRequires:	dbus-glib-devel >= 0.62
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	exo-devel >= 0.10.0
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.18.0
 BuildRequires:	gtk+2-devel >= 2:2.14.0
 BuildRequires:	gtk-doc >= 1.7
