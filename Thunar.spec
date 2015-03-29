@@ -2,16 +2,16 @@
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
 
-%define		xfce_version	4.10.0
+%define		xfce_version	4.12.0
 Summary:	Xfce file manager
 Summary(pl.UTF-8):	Zarządca plików Xfce
 Name:		Thunar
-Version:	1.6.3
-Release:	2
+Version:	1.6.6
+Release:	1
 License:	GPL v2 / LGPL v2
 Group:		X11/Applications
 Source0:	http://archive.xfce.org/src/xfce/thunar/1.6/%{name}-%{version}.tar.bz2
-# Source0-md5:	4f10d5d5576ce5127308d6badbac3afa
+# Source0-md5:	27a5343174593dd0067906c922e6af96
 Patch0:		%{name}-desktop.patch
 URL:		http://thunar.xfce.org/
 BuildRequires:	autoconf >= 2.50
@@ -20,8 +20,8 @@ BuildRequires:	dbus-glib-devel >= 0.62
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	exo-devel >= 0.10.0
 BuildRequires:	gettext-tools
-BuildRequires:	glib2-devel >= 1:2.18.0
-BuildRequires:	gtk+2-devel >= 2:2.14.0
+BuildRequires:	glib2-devel >= 1:2.30.0
+BuildRequires:	gtk+2-devel >= 2:2.24.0
 BuildRequires:	gtk-doc >= 1.7
 BuildRequires:	intltool
 BuildRequires:	libexif-devel >= 0.6.0
@@ -89,7 +89,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek Thunar
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	exo-devel >= 0.6.0
-Requires:	gtk+2-devel >= 2:2.14.0
+Requires:	gtk+2-devel >= 2:2.24.0
 Obsoletes:	thunar-vfs-devel
 
 %description devel
@@ -114,6 +114,8 @@ Statyczne biblioteki Thunar.
 %prep
 %setup -q
 %patch0 -p1
+
+mkdir -p m4
 
 %{__sed} -i -e 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/' configure.ac
 
@@ -178,8 +180,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/thunarx-2/*.so
 %attr(755,root,root) %{_libdir}/xfce4/panel/plugins/libthunar-tpa.so
 
+%{_datadir}/appdata/thunar.appdata.xml
+%{_datadir}/polkit-1/actions/org.xfce.thunar.policy
 %{_datadir}/Thunar/sendto/*.desktop
-%{_datadir}/xfce4/panel-plugins/*.desktop
+%{_datadir}/xfce4/panel/plugins/*.desktop
 %{_datadir}/dbus-1/services/*.service
 %{_desktopdir}/*.desktop
 %{_iconsdir}/hicolor/*/*/*
