@@ -6,40 +6,43 @@
 Summary:	Xfce file manager
 Summary(pl.UTF-8):	Zarządca plików Xfce
 Name:		Thunar
-Version:	1.6.6
+Version:	1.8.0
 Release:	1
 License:	GPL v2 / LGPL v2
 Group:		X11/Applications
-Source0:	http://archive.xfce.org/src/xfce/thunar/1.6/%{name}-%{version}.tar.bz2
-# Source0-md5:	27a5343174593dd0067906c922e6af96
+Source0:	http://archive.xfce.org/src/xfce/thunar/1.8/%{name}-%{version}.tar.bz2
+# Source0-md5:	245ca8e9111c44667032023199ca7778
 Patch0:		%{name}-desktop.patch
 URL:		http://thunar.xfce.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.8
 BuildRequires:	dbus-glib-devel >= 0.62
 BuildRequires:	docbook-dtd412-xml
-BuildRequires:	exo-devel >= 0.10.0
+BuildRequires:	exo-devel >= 0.12.0
+BuildRequires:	gdk-pixbuf2-devel
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.30.0
-BuildRequires:	gtk+2-devel >= 2:2.24.0
+BuildRequires:	gobject-introspection-devel >= 1.30.0
+BuildRequires:	gtk+3-devel >= 3.22.0
 BuildRequires:	gtk-doc >= 1.7
 BuildRequires:	intltool
 BuildRequires:	libexif-devel >= 0.6.0
+BuildRequires:	libgudev-devel
 BuildRequires:	libnotify-devel >= 0.4.0
 BuildRequires:	libtool
-BuildRequires:	libxfce4ui-devel >= %{xfce_version}
+BuildRequires:	libxfce4ui-devel >= 4.13.2
 BuildRequires:	libxfce4util-devel >= %{xfce_version}
 BuildRequires:	pcre-devel >= 6.0
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.601
 BuildRequires:	startup-notification-devel >= 0.8
-BuildRequires:	udev-glib-devel >= 145
 BuildRequires:	xfce4-dev-tools >= %{xfce_version}
 BuildRequires:	xfce4-panel-devel >= %{xfce_version}
+BuildRequires:	xfconf-devel >= %{xfce_version}
 Requires(post,postun):	desktop-file-utils
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	exo >= 0.8.0
+Requires:	exo >= 0.12.0
 Requires:	gtk-update-icon-cache
 Requires:	hicolor-icon-theme
 Requires:	shared-mime-info >= 0.15
@@ -88,8 +91,8 @@ Summary:	Header files for Thunar libraries
 Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek Thunar
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	exo-devel >= 0.6.0
-Requires:	gtk+2-devel >= 2:2.24.0
+Requires:	exo-devel >= 0.12.0
+Requires:	gtk+3-devel >= 3.22.0
 Obsoletes:	thunar-vfs-devel
 
 %description devel
@@ -144,7 +147,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/thunarx-2/*.{a,la}
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/thunarx-3/*.{a,la}
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/xfce4/panel/plugins/*.{a,la}
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 
@@ -176,11 +179,13 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/Thunar
 %attr(755,root,root) %{_libdir}/Thunar/ThunarBulkRename
 %attr(755,root,root) %{_libdir}/Thunar/thunar-sendto-email
-%dir %{_libdir}/thunarx-2
-%attr(755,root,root) %{_libdir}/thunarx-2/*.so
+%dir %{_libdir}/thunarx-3
+%attr(755,root,root) %{_libdir}/thunarx-3/*.so
 %attr(755,root,root) %{_libdir}/xfce4/panel/plugins/libthunar-tpa.so
 
-%{_datadir}/appdata/thunar.appdata.xml
+%{systemduserunitdir}/thunar.service
+%{_libdir}/girepository-1.0/Thunarx-3.0.typelib
+%{_datadir}/metainfo/org.xfce.thunar.appdata.xml
 %{_datadir}/polkit-1/actions/org.xfce.thunar.policy
 %{_datadir}/Thunar/sendto/*.desktop
 %{_datadir}/xfce4/panel/plugins/*.desktop
@@ -200,17 +205,18 @@ rm -rf $RPM_BUILD_ROOT
 
 %files libs
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libthunarx-2.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libthunarx-2.so.0
+%attr(755,root,root) %{_libdir}/libthunarx-3.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libthunarx-3.so.0
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libthunarx-2.so
-%{_includedir}/thunarx-2
-%{_pkgconfigdir}/thunarx-2.pc
+%attr(755,root,root) %{_libdir}/libthunarx-3.so
+%{_includedir}/thunarx-3
+%{_pkgconfigdir}/thunarx-3.pc
+%{_datadir}/gir-1.0/Thunarx-3.0.gir
 
 %if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/libthunarx-2.a
+%{_libdir}/libthunarx-3.a
 %endif
