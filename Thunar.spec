@@ -6,12 +6,12 @@
 Summary:	Xfce file manager
 Summary(pl.UTF-8):	Zarządca plików Xfce
 Name:		Thunar
-Version:	1.8.4
+Version:	1.8.6
 Release:	1
 License:	GPL v2 / LGPL v2
 Group:		X11/Applications
 Source0:	http://archive.xfce.org/src/xfce/thunar/1.8/%{name}-%{version}.tar.bz2
-# Source0-md5:	6a5d0f4ddcc653c4791e555f0dc63828
+# Source0-md5:	3cb40548d7c642176eab8b97a5ba6d29
 Patch0:		%{name}-desktop.patch
 URL:		http://thunar.xfce.org/
 BuildRequires:	autoconf >= 2.50
@@ -155,6 +155,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__rm} -r $RPM_BUILD_ROOT%{_localedir}/ur_PK
 
 %{__rm} -r $RPM_BUILD_ROOT%{_localedir}/fa_IR
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/ie
 
 %find_lang %{name} --all-name
 
