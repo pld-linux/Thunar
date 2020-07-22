@@ -7,9 +7,9 @@ diff -urN Thunar-1.2.0/thunar/thunar-settings.desktop.in Thunar-1.2.0.new//thuna
  Categories=XFCE;GTK;Settings;DesktopSettings;X-XFCE-SettingsDialog;X-XFCE-PersonalSettings;
 +OnlyShowIn=XFCE;
  StartupNotify=true
-diff -urN Thunar-1.2.0/Thunar-bulk-rename.desktop.in.in Thunar-1.2.0.new//Thunar-bulk-rename.desktop.in.in
---- Thunar-1.2.0/Thunar-bulk-rename.desktop.in.in	2011-01-16 16:02:11.000000000 +0000
-+++ Thunar-1.2.0.new//Thunar-bulk-rename.desktop.in.in	2011-01-30 12:53:15.139999548 +0000
+diff -urN Thunar-1.2.0/thunar-bulk-rename.desktop.in.in Thunar-1.2.0.new//thunar-bulk-rename.desktop.in.in
+--- Thunar-1.2.0/thunar-bulk-rename.desktop.in.in	2011-01-16 16:02:11.000000000 +0000
++++ Thunar-1.2.0.new//thunar-bulk-rename.desktop.in.in	2011-01-30 12:53:15.139999548 +0000
 @@ -7,6 +7,7 @@
  Terminal=false
  StartupNotify=true
@@ -19,28 +19,15 @@ diff -urN Thunar-1.2.0/Thunar-bulk-rename.desktop.in.in Thunar-1.2.0.new//Thunar
 +OnlyShowIn=XFCE;
  
  # vi:set encoding=UTF-8:
-diff -urN Thunar-1.2.0/Thunar.desktop.in.in Thunar-1.2.0.new//Thunar.desktop.in.in
---- Thunar-1.2.0/Thunar.desktop.in.in	2011-01-16 16:02:11.000000000 +0000
-+++ Thunar-1.2.0.new//Thunar.desktop.in.in	2011-01-30 12:55:39.470000167 +0000
-@@ -7,6 +7,6 @@
+diff -urN Thunar-1.2.0/thunar.desktop.in.in Thunar-1.2.0.new//thunar.desktop.in.in
+--- Thunar-1.2.0/thunar.desktop.in.in	2011-01-16 16:02:11.000000000 +0000
++++ Thunar-1.2.0.new//thunar.desktop.in.in	2011-01-30 12:55:39.470000167 +0000
  Terminal=false
  StartupNotify=true
  Type=Application
 -Categories=System;Utility;Core;GTK;FileTools;FileManager;
--
 +Categories=XFCE;System;Utility;Core;GTK;FileTools;FileManager;
 +OnlyShowIn=XFCE;
- # vi:set encoding=UTF-8:
-diff -urN Thunar-1.2.0/Thunar-folder-handler.desktop.in.in Thunar-1.2.0.new//Thunar-folder-handler.desktop.in.in
---- Thunar-1.2.0/Thunar-folder-handler.desktop.in.in	2011-01-16 16:02:11.000000000 +0000
-+++ Thunar-1.2.0.new//Thunar-folder-handler.desktop.in.in	2011-01-30 12:55:05.763333870 +0000
-@@ -9,7 +9,7 @@
- Terminal=false
- StartupNotify=true
- Type=Application
--Categories=System;Utility;Core;GTK;FileTools;FileManager;
-+Categories=XFCE;System;Utility;Core;GTK;FileTools;FileManager;
  MimeType=inode/directory;
--
-+OnlyShowIn=XFCE;
+ 
  # vi:set encoding=UTF-8:
