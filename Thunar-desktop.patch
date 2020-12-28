@@ -10,7 +10,7 @@ diff -urN Thunar-1.2.0/thunar/thunar-settings.desktop.in Thunar-1.2.0.new//thuna
 diff -urN Thunar-1.2.0/thunar-bulk-rename.desktop.in.in Thunar-1.2.0.new//thunar-bulk-rename.desktop.in.in
 --- Thunar-1.2.0/thunar-bulk-rename.desktop.in.in	2011-01-16 16:02:11.000000000 +0000
 +++ Thunar-1.2.0.new//thunar-bulk-rename.desktop.in.in	2011-01-30 12:53:15.139999548 +0000
-@@ -7,6 +7,7 @@
+@@ -8,4 +8,5 @@
  Terminal=false
  StartupNotify=true
  Type=Application
@@ -22,6 +22,7 @@ diff -urN Thunar-1.2.0/thunar-bulk-rename.desktop.in.in Thunar-1.2.0.new//thunar
 diff -urN Thunar-1.2.0/thunar.desktop.in.in Thunar-1.2.0.new//thunar.desktop.in.in
 --- Thunar-1.2.0/thunar.desktop.in.in	2011-01-16 16:02:11.000000000 +0000
 +++ Thunar-1.2.0.new//thunar.desktop.in.in	2011-01-30 12:55:39.470000167 +0000
+@@ -8,7 +8,8 @@
  Terminal=false
  StartupNotify=true
  Type=Application
@@ -29,5 +30,6 @@ diff -urN Thunar-1.2.0/thunar.desktop.in.in Thunar-1.2.0.new//thunar.desktop.in.
 +Categories=XFCE;System;Utility;Core;GTK;FileTools;FileManager;
 +OnlyShowIn=XFCE;
  MimeType=inode/directory;
+ Actions=open-home;open-computer;open-trash;
  
- # vi:set encoding=UTF-8:
+ # vi:set emcoding=UTF-8:

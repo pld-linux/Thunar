@@ -2,26 +2,26 @@
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
 
-%define		xfce_version	4.12.0
+%define		xfce_version	4.16.0
 Summary:	Xfce file manager
 Summary(pl.UTF-8):	Zarządca plików Xfce
 Name:		Thunar
-Version:	1.8.15
+Version:	4.16.0
 Release:	1
 License:	GPL v2 / LGPL v2
 Group:		X11/Applications
-Source0:	http://archive.xfce.org/src/xfce/thunar/1.8/thunar-%{version}.tar.bz2
-# Source0-md5:	303010f4959fa23f7c13c0ccd9b8527e
+Source0:	http://archive.xfce.org/src/xfce/thunar/4.16/thunar-%{version}.tar.bz2
+# Source0-md5:	7b49f71c3748bcbda08d30ae3ff4cf01
 Patch0:		%{name}-desktop.patch
 URL:		http://thunar.xfce.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.8
 BuildRequires:	dbus-glib-devel >= 0.62
 BuildRequires:	docbook-dtd412-xml
-BuildRequires:	exo-devel >= 0.12.0
+BuildRequires:	exo-devel >= 4.15.3
 BuildRequires:	gdk-pixbuf2-devel
 BuildRequires:	gettext-tools
-BuildRequires:	glib2-devel >= 1:2.30.0
+BuildRequires:	glib2-devel >= 1:2.50.0
 BuildRequires:	gobject-introspection-devel >= 1.30.0
 BuildRequires:	gtk+3-devel >= 3.22.0
 BuildRequires:	gtk-doc >= 1.7
@@ -30,7 +30,7 @@ BuildRequires:	libexif-devel >= 0.6.0
 BuildRequires:	libgudev-devel
 BuildRequires:	libnotify-devel >= 0.4.0
 BuildRequires:	libtool
-BuildRequires:	libxfce4ui-devel >= 4.12.0
+BuildRequires:	libxfce4ui-devel >= 4.16.0
 BuildRequires:	libxfce4util-devel >= %{xfce_version}
 BuildRequires:	pcre-devel >= 6.0
 BuildRequires:	perl-base
@@ -42,7 +42,7 @@ BuildRequires:	xfce4-panel-devel >= %{xfce_version}
 BuildRequires:	xfconf-devel >= %{xfce_version}
 Requires(post,postun):	desktop-file-utils
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	exo >= 0.12.0
+Requires:	exo >= 4.15.3
 Requires:	gtk-update-icon-cache
 Requires:	hicolor-icon-theme
 Requires:	shared-mime-info >= 0.15
@@ -91,7 +91,7 @@ Summary:	Header files for Thunar libraries
 Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek Thunar
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	exo-devel >= 0.12.0
+Requires:	exo-devel >= 4.15.3
 Requires:	gtk+3-devel >= 3.22.0
 Obsoletes:	thunar-vfs-devel
 
@@ -131,11 +131,9 @@ mkdir -p m4
 %{__autoheader}
 %{__autoconf}
 %configure \
-	--enable-dbus \
 	--enable-exif \
 	--enable-gtk-doc \
 	--enable-pcre \
-	--enable-startup-notification \
 	--with-html-dir=%{_gtkdocdir} \
 	%{?with_static_libs:--enable-static} \
 	--disable-silent-rules
@@ -155,7 +153,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__rm} -r $RPM_BUILD_ROOT%{_localedir}/ur_PK
 
 # unknown / unsupported
-%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{fa_IR,hy_AM,ie}
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{fa_IR,hye,hy_AM,ie}
 
 %find_lang %{name} --all-name
 
@@ -175,12 +173,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README THANKS TODO
+%doc AUTHORS ChangeLog NEWS THANKS
 %attr(755,root,root) %{_bindir}/*
 %dir %{_sysconfdir}/xdg/Thunar
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/xdg/Thunar/*.xml
 %dir %{_libdir}/Thunar
-%attr(755,root,root) %{_libdir}/Thunar/ThunarBulkRename
 %attr(755,root,root) %{_libdir}/Thunar/thunar-sendto-email
 %dir %{_libdir}/thunarx-3
 %attr(755,root,root) %{_libdir}/thunarx-3/*.so
@@ -195,7 +192,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/dbus-1/services/*.service
 %{_desktopdir}/*.desktop
 %{_iconsdir}/hicolor/*/*/*
-%{_pixmapsdir}/Thunar
 %{_mandir}/man1/Thunar*
 
 %dir %{_docdir}/thunar
