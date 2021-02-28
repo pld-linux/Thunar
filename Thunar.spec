@@ -64,9 +64,7 @@ Summary(pl.UTF-8):	Dokumentacja API Thunar
 Group:		Documentation
 Requires:	gtk-doc-common
 Obsoletes:	thunar-vfs-apidocs
-%if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
-%endif
 
 %description apidocs
 Thunar API documentation.
