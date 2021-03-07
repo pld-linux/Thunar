@@ -6,12 +6,12 @@
 Summary:	Xfce file manager
 Summary(pl.UTF-8):	Zarządca plików Xfce
 Name:		Thunar
-Version:	4.16.3
+Version:	4.16.4
 Release:	1
 License:	GPL v2 / LGPL v2
 Group:		X11/Applications
 Source0:	http://archive.xfce.org/src/xfce/thunar/4.16/thunar-%{version}.tar.bz2
-# Source0-md5:	9bfb647e64664c796b3b28bbc8e2189a
+# Source0-md5:	34afbedda321d9baccf517615a680552
 Patch0:		%{name}-desktop.patch
 URL:		http://thunar.xfce.org/
 BuildRequires:	autoconf >= 2.50
@@ -48,7 +48,7 @@ Requires:	hicolor-icon-theme
 Requires:	shared-mime-info >= 0.15
 Requires:	xfconf >= %{xfce_version}
 Suggests:	tumbler
-Obsoletes:	Thunar-thumbnailers
+Obsoletes:	Thunar-thumbnailers < 0.5
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -63,7 +63,7 @@ Summary:	Thunar API documentation
 Summary(pl.UTF-8):	Dokumentacja API Thunar
 Group:		Documentation
 Requires:	gtk-doc-common
-Obsoletes:	thunar-vfs-apidocs
+Obsoletes:	thunar-vfs-apidocs < 1.3
 BuildArch:	noarch
 
 %description apidocs
@@ -76,7 +76,7 @@ Dokumentacja API Thunar.
 Summary:	Thunar libraries
 Summary(pl.UTF-8):	Biblioteki Thunar
 Group:		X11/Libraries
-Obsoletes:	thunar-vfs
+Obsoletes:	thunar-vfs < 1.3
 
 %description libs
 Thunar libraries.
@@ -91,7 +91,7 @@ Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	exo-devel >= 4.15.3
 Requires:	gtk+3-devel >= 3.22.0
-Obsoletes:	thunar-vfs-devel
+Obsoletes:	thunar-vfs-devel < 1.3
 
 %description devel
 This is the package containing the header files for Thunar libraries.
@@ -104,7 +104,7 @@ Summary:	Static Thunar libraries
 Summary(pl.UTF-8):	Statyczne biblioteki Thunar
 Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
-Obsoletes:	thunar-vfs-static
+Obsoletes:	thunar-vfs-static < 1.3
 
 %description static
 Static Thunar libraries.
