@@ -7,7 +7,7 @@ Summary:	Xfce file manager
 Summary(pl.UTF-8):	Zarządca plików Xfce
 Name:		Thunar
 Version:	4.16.9
-Release:	1
+Release:	2
 License:	GPL v2 / LGPL v2
 Group:		X11/Applications
 Source0:	http://archive.xfce.org/src/xfce/thunar/4.16/thunar-%{version}.tar.bz2
@@ -35,17 +35,19 @@ BuildRequires:	libxfce4util-devel >= %{xfce_version}
 BuildRequires:	pcre-devel >= 6.0
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
-BuildRequires:	rpmbuild(macros) >= 1.601
+BuildRequires:	rpmbuild(macros) >= 2.011
 BuildRequires:	startup-notification-devel >= 0.8
 BuildRequires:	xfce4-dev-tools >= %{xfce_version}
 BuildRequires:	xfce4-panel-devel >= %{xfce_version}
 BuildRequires:	xfconf-devel >= %{xfce_version}
 Requires(post,postun):	desktop-file-utils
+Requires(post,preun):	systemd-units >= 250.1
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	exo >= 4.15.3
 Requires:	gtk-update-icon-cache
 Requires:	hicolor-icon-theme
 Requires:	shared-mime-info >= 0.15
+Requires:	systemd-units >= 250.1
 Requires:	xfconf >= %{xfce_version}
 Suggests:	tumbler
 Obsoletes:	Thunar-thumbnailers < 0.5
@@ -161,6 +163,10 @@ rm -rf $RPM_BUILD_ROOT
 %post
 %update_desktop_database_post
 %update_icon_cache hicolor
+%systemd_user_post thunar.service
+
+%preun
+%systemd_user_preun thunar.service
 
 %postun
 %update_desktop_database_postun
