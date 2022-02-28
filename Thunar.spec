@@ -41,13 +41,13 @@ BuildRequires:	xfce4-dev-tools >= %{xfce_version}
 BuildRequires:	xfce4-panel-devel >= %{xfce_version}
 BuildRequires:	xfconf-devel >= %{xfce_version}
 Requires(post,postun):	desktop-file-utils
-Requires(post,preun):	systemd-units >= 250.1
+Requires(post,preun):	systemd-units >= 1:250.1
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	exo >= 4.15.3
 Requires:	gtk-update-icon-cache
 Requires:	hicolor-icon-theme
 Requires:	shared-mime-info >= 0.15
-Requires:	systemd-units >= 250.1
+Requires:	systemd-units >= 1:250.1
 Requires:	xfconf >= %{xfce_version}
 Suggests:	tumbler
 Obsoletes:	Thunar-thumbnailers < 0.5
