@@ -2,18 +2,18 @@
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
 
-%define		xfce_version	4.16.0
+%define		xfce_version	4.18.0
 Summary:	Xfce file manager
 Summary(pl.UTF-8):	Zarządca plików Xfce
 Name:		Thunar
-Version:	4.16.11
+Version:	4.18.0
 Release:	1
 License:	GPL v2 / LGPL v2
 Group:		X11/Applications
-Source0:	http://archive.xfce.org/src/xfce/thunar/4.16/thunar-%{version}.tar.bz2
-# Source0-md5:	2c439fc00b3e312a7d697c383403bddf
+Source0:	https://archive.xfce.org/src/xfce/thunar/4.18/thunar-%{version}.tar.bz2
+# Source0-md5:	5beec0a224ef65b8d89b4dc0ce3bff53
 Patch0:		%{name}-desktop.patch
-URL:		http://thunar.xfce.org/
+URL:		https://thunar.xfce.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.8
 BuildRequires:	dbus-glib-devel >= 0.62
@@ -21,7 +21,7 @@ BuildRequires:	docbook-dtd412-xml
 BuildRequires:	exo-devel >= 4.15.3
 BuildRequires:	gdk-pixbuf2-devel
 BuildRequires:	gettext-tools
-BuildRequires:	glib2-devel >= 1:2.50.0
+BuildRequires:	glib2-devel >= 1:2.66.0
 BuildRequires:	gobject-introspection-devel >= 1.30.0
 BuildRequires:	gtk+3-devel >= 3.22.0
 BuildRequires:	gtk-doc >= 1.7
@@ -30,7 +30,7 @@ BuildRequires:	libexif-devel >= 0.6.0
 BuildRequires:	libgudev-devel
 BuildRequires:	libnotify-devel >= 0.4.0
 BuildRequires:	libtool
-BuildRequires:	libxfce4ui-devel >= 4.16.0
+BuildRequires:	libxfce4ui-devel >= 4.18.0
 BuildRequires:	libxfce4util-devel >= %{xfce_version}
 BuildRequires:	pcre-devel >= 6.0
 BuildRequires:	perl-base
@@ -133,7 +133,6 @@ mkdir -p m4
 %configure \
 	--enable-exif \
 	--enable-gtk-doc \
-	--enable-pcre \
 	--with-html-dir=%{_gtkdocdir} \
 	%{?with_static_libs:--enable-static} \
 	--disable-silent-rules
@@ -201,6 +200,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_docdir}/thunar
 # move it to proper place
 %{_docdir}/thunar/README*
+%{_gtkdocdir}/thunar
 
 %files apidocs
 %defattr(644,root,root,755)
