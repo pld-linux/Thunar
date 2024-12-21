@@ -2,16 +2,16 @@
 # Conditional build:
 %bcond_without	static_libs	# static library
 
-%define		xfce_version	4.18.0
+%define		xfce_version	4.20.0
 Summary:	Xfce file manager
 Summary(pl.UTF-8):	Zarządca plików Xfce
 Name:		Thunar
-Version:	4.18.11
+Version:	4.20.0
 Release:	1
 License:	GPL v2 / LGPL v2
 Group:		X11/Applications
-Source0:	https://archive.xfce.org/src/xfce/thunar/4.18/thunar-%{version}.tar.bz2
-# Source0-md5:	506e80f3fa94aca251b18c185b1303e8
+Source0:	https://archive.xfce.org/src/xfce/thunar/4.20/thunar-%{version}.tar.bz2
+# Source0-md5:	688a469c16daca831035ee9ae90afcc4
 Patch0:		%{name}-desktop.patch
 URL:		https://docs.xfce.org/xfce/thunar/start
 BuildRequires:	autoconf >= 2.60
@@ -20,7 +20,7 @@ BuildRequires:	docbook-dtd412-xml
 BuildRequires:	exo-devel >= 4.17.0
 BuildRequires:	gdk-pixbuf2-devel >= 2.40.0
 BuildRequires:	gettext-tools
-BuildRequires:	glib2-devel >= 1:2.66.0
+BuildRequires:	glib2-devel >= 1:2.72.0
 BuildRequires:	gobject-introspection-devel >= 1.66.0
 BuildRequires:	gtk+3-devel >= 3.24.0
 BuildRequires:	gtk-doc >= 1.9
@@ -31,8 +31,8 @@ BuildRequires:	libnotify-devel >= 0.4.0
 BuildRequires:	libtool >= 2:2.4
 BuildRequires:	libxfce4ui-devel >= %{xfce_version}
 BuildRequires:	libxfce4util-devel >= %{xfce_version}
-BuildRequires:	pcre-devel >= 6.0
 BuildRequires:	pango-devel >= 1:1.38.0
+BuildRequires:	pcre-devel >= 6.0
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	rpm-build >= 4.6
@@ -47,7 +47,7 @@ Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk-update-icon-cache
 Requires(post,preun):	systemd-units >= 1:250.1
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	exo >= 4.17.0
+Requires:	exo >= 4.20.0
 Requires:	gdk-pixbuf2 >= 2.40.0
 Requires:	hicolor-icon-theme
 Requires:	libnotify >= 0.4.0
@@ -72,7 +72,7 @@ szybkość użycia.
 Summary:	Thunar libraries
 Summary(pl.UTF-8):	Biblioteki Thunar
 Group:		X11/Libraries
-Requires:	glib2 >= 1:2.66.0
+Requires:	glib2 >= 1:2.72.0
 Requires:	gtk+3 >= 3.24.0
 Obsoletes:	thunar-vfs < 1.3
 
@@ -87,7 +87,7 @@ Summary:	Header files for Thunar libraries
 Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek Thunar
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.66.0
+Requires:	glib2-devel >= 1:2.72.0
 Requires:	gtk+3-devel >= 3.24.0
 Obsoletes:	thunar-vfs-devel < 1.3
 
@@ -126,11 +126,10 @@ Dokumentacja API Thunar.
 
 %prep
 %setup -q -n thunar-%{version}
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 %{__gtkdocize}
-%{__intltoolize}
 %{__libtoolize}
 %{__aclocal}
 %{__automake}
