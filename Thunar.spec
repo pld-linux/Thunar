@@ -14,17 +14,16 @@ Source0:	https://archive.xfce.org/src/xfce/thunar/4.20/thunar-%{version}.tar.bz2
 # Source0-md5:	688a469c16daca831035ee9ae90afcc4
 Patch0:		%{name}-desktop.patch
 URL:		https://docs.xfce.org/xfce/thunar/start
-BuildRequires:	autoconf >= 2.60
+BuildRequires:	autoconf >= 2.69
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	docbook-dtd412-xml
-BuildRequires:	exo-devel >= 4.17.0
-BuildRequires:	gdk-pixbuf2-devel >= 2.40.0
-BuildRequires:	gettext-tools
+BuildRequires:	exo-devel >= 4.20.0
+BuildRequires:	gdk-pixbuf2-devel >= 2.42.8
+BuildRequires:	gettext-tools >= 0.19.8
 BuildRequires:	glib2-devel >= 1:2.72.0
-BuildRequires:	gobject-introspection-devel >= 1.66.0
+BuildRequires:	gobject-introspection-devel >= 1.72.0
 BuildRequires:	gtk+3-devel >= 3.24.0
 BuildRequires:	gtk-doc >= 1.9
-BuildRequires:	intltool
 BuildRequires:	libexif-devel >= 0.6.0
 BuildRequires:	libgudev-devel >= 145
 BuildRequires:	libnotify-devel >= 0.4.0
@@ -48,7 +47,7 @@ Requires(post,postun):	gtk-update-icon-cache
 Requires(post,preun):	systemd-units >= 1:250.1
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	exo >= 4.20.0
-Requires:	gdk-pixbuf2 >= 2.40.0
+Requires:	gdk-pixbuf2 >= 2.42.8
 Requires:	hicolor-icon-theme
 Requires:	libnotify >= 0.4.0
 Requires:	libxfce4ui >= %{xfce_version}
