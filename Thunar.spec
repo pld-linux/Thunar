@@ -6,12 +6,12 @@
 Summary:	Xfce file manager
 Summary(pl.UTF-8):	Zarządca plików Xfce
 Name:		Thunar
-Version:	4.20.7
+Version:	4.20.8
 Release:	1
 License:	GPL v2 / LGPL v2
 Group:		X11/Applications
 Source0:	https://archive.xfce.org/src/xfce/thunar/4.20/thunar-%{version}.tar.bz2
-# Source0-md5:	b3cd1136032de77e9edebf1fd3306086
+# Source0-md5:	6c6b958d96de74b5f0369e8b1ff999c1
 Patch0:		%{name}-desktop.patch
 URL:		https://docs.xfce.org/xfce/thunar/start
 BuildRequires:	autoconf >= 2.69
@@ -190,8 +190,8 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/Thunar
 %attr(755,root,root) %{_libdir}/Thunar/thunar-sendto-email
 %dir %{_libdir}/thunarx-3
-%attr(755,root,root) %{_libdir}/thunarx-3/thunar-*.so
-%attr(755,root,root) %{_libdir}/xfce4/panel/plugins/libthunar-tpa.so
+%{_libdir}/thunarx-3/thunar-*.so
+%{_libdir}/xfce4/panel/plugins/libthunar-tpa.so
 
 %{systemduserunitdir}/thunar.service
 %{_datadir}/dbus-1/services/org.xfce.FileManager.service
@@ -215,13 +215,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %files libs
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libthunarx-3.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libthunarx-3.so.0
+%{_libdir}/libthunarx-3.so.*.*.*
+%ghost %{_libdir}/libthunarx-3.so.0
 %{_libdir}/girepository-1.0/Thunarx-3.0.typelib
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libthunarx-3.so
+%{_libdir}/libthunarx-3.so
 %{_includedir}/thunarx-3
 %{_pkgconfigdir}/thunarx-3.pc
 %{_datadir}/gir-1.0/Thunarx-3.0.gir
